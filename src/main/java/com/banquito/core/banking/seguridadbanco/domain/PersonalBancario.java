@@ -32,8 +32,8 @@ public class PersonalBancario {
     @Column(name = "USUARIO", nullable = false, length = 100)
     private String usuario;
 
-    @Column(name = "CONTRASEÑA", nullable = false, length = 64)
-    private String contraseña;
+    @Column(name = "CLAVE", nullable = false, length = 64)
+    private String clave;
 
     @Column(name = "ACCESO", nullable = false, length = 100)
     private String acceso;
@@ -90,8 +90,8 @@ public class PersonalBancario {
 
     @Override
     public String toString() {
-        return "PersonalBancario [codPersonalBancario=" + codPersonalBancario + ", usuario=" + usuario + ", contraseña="
-                + contraseña + ", acceso=" + acceso + ", fechaCreacion=" + fechaCreacion + ", fechaUltimaModificacion="
+        return "PersonalBancario [codPersonalBancario=" + codPersonalBancario + ", usuario=" + usuario + ", clave="
+                + clave + ", acceso=" + acceso + ", fechaCreacion=" + fechaCreacion + ", fechaUltimaModificacion="
                 + fechaUltimaModificacion + ", rol=" + rol + ", accesos=" + accesos + ", version=" + version + "]";
     }
 

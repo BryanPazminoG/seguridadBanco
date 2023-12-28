@@ -59,8 +59,8 @@ public class PersonalBancarioController {
 
     @GetMapping("/accesos")
     public ResponseEntity<Map<String, Object>> getAccesosByUsuarioAndContraseña(
-            @RequestParam String usuario, @RequestParam String contraseña) {
-        Map<String, Object> response = personalBancarioService.getAccesosByUsuarioAndContraseña(usuario, contraseña);
+            @RequestParam String usuario, @RequestParam String clave) {
+        Map<String, Object> response = personalBancarioService.getAccesosByUsuarioAndClave(usuario, clave);
 
         return response != null
                 ? new ResponseEntity<>(response, HttpStatus.OK)

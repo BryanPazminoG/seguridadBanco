@@ -1,7 +1,7 @@
 package com.banquito.core.banking.seguridadbanco.services;
 
 import com.banquito.core.banking.seguridadbanco.dao.PersonalBancarioRepository;
-import com.banquito.core.banking.seguridadbanco.domain.AccesoPbRol;
+// import com.banquito.core.banking.seguridadbanco.domain.AccesoPbRol;
 import com.banquito.core.banking.seguridadbanco.domain.PersonalBancario;
 import com.banquito.core.banking.seguridadbanco.services.exception.CreateException;
 
@@ -43,8 +43,8 @@ public class PersonalBancarioService {
     //     return personalBancario != null ? personalBancario.getAccesos() : null;
     // }
 
-    public Map<String, Object> getAccesosByUsuarioAndContraseña(String usuario, String contraseña) {
-        PersonalBancario personalBancario = personalBancarioRepository.findByUsuarioAndContraseña(usuario, contraseña)
+    public Map<String, Object> getAccesosByUsuarioAndClave(String usuario, String clave) {
+        PersonalBancario personalBancario = personalBancarioRepository.findByUsuarioAndClave(usuario, clave)
                 .orElse(null);
     
         if (personalBancario != null) {
