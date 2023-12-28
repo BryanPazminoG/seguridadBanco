@@ -5,6 +5,8 @@ import java.sql.Timestamp;
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -36,6 +38,15 @@ public class AccesoPbRol {
     @Column(name = "FECHA_ULTIMA_MODIFICACION", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Timestamp fechaUltimaModificacion;
+
+    @ManyToOne
+    @JoinColumn(name = "COD_ROL", referencedColumnName = "COD_ROL", insertable = false, updatable = false)
+    private Rol rol;
+
+    @ManyToOne
+    @JoinColumn(name = "COD_PER_BAN", referencedColumnName = "COD_PER_BAN", insertable = false, updatable = false)
+    private PersonalBancario personalBancario;
+
 
     @Version
     private Long version;

@@ -1,5 +1,6 @@
 package com.banquito.core.banking.seguridadbanco.controller;
 
+// import com.banquito.core.banking.seguridadbanco.domain.AccesoPbRol;
 import com.banquito.core.banking.seguridadbanco.domain.PersonalBancario;
 import com.banquito.core.banking.seguridadbanco.services.PersonalBancarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/personal-bancario")
@@ -45,13 +47,26 @@ public class PersonalBancarioController {
                 HttpStatus.OK);
     }
 
-    @GetMapping("/getbyusuarioandcontraseña")
-    public ResponseEntity<PersonalBancario> getByUsuarioAndContraseña(
+    // @GetMapping("/accesos")
+    // public ResponseEntity<List<AccesoPbRol>> getAccesosByUsuarioAndContraseña(
+    //         @RequestParam String usuario, @RequestParam String contraseña) {
+    //     List<AccesoPbRol> accesos = personalBancarioService.getAccesosByUsuarioAndContraseña(usuario, contraseña);
+
+    //     return accesos != null
+    //             ? new ResponseEntity<>(accesos, HttpStatus.OK)
+    //             : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    // }
+
+    @GetMapping("/accesos")
+    public ResponseEntity<Map<String, Object>> getAccesosByUsuarioAndContraseña(
             @RequestParam String usuario, @RequestParam String contraseña) {
-        PersonalBancario personalBancario = personalBancarioService.getByUsuarioAndContraseña(usuario, contraseña);
-        return personalBancario != null ? new ResponseEntity<>(personalBancario, HttpStatus.OK)
+        Map<String, Object> response = personalBancarioService.getAccesosByUsuarioAndContraseña(usuario, contraseña);
+
+        return response != null
+                ? new ResponseEntity<>(response, HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
 
     @PostMapping("/create")
     public ResponseEntity<PersonalBancario> create(@RequestBody PersonalBancario personalBancario) {

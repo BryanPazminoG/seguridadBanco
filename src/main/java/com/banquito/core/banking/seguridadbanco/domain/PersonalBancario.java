@@ -2,6 +2,7 @@ package com.banquito.core.banking.seguridadbanco.domain;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -47,7 +49,10 @@ public class PersonalBancario {
     @ManyToOne
     @JoinColumn(name = "COD_ROL", nullable = false, updatable = false, insertable = false)
     private Rol rol;
-   
+    
+   @OneToMany(mappedBy = "personalBancario")
+    private List<AccesoPbRol> accesos;
+
     @Version
     private Long version;
 
@@ -87,7 +92,7 @@ public class PersonalBancario {
     public String toString() {
         return "PersonalBancario [codPersonalBancario=" + codPersonalBancario + ", usuario=" + usuario + ", contraseña="
                 + contraseña + ", acceso=" + acceso + ", fechaCreacion=" + fechaCreacion + ", fechaUltimaModificacion="
-                + fechaUltimaModificacion + ", rol=" + rol + ", version=" + version + "]";
+                + fechaUltimaModificacion + ", rol=" + rol + ", accesos=" + accesos + ", version=" + version + "]";
     }
 
    

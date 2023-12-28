@@ -1,6 +1,7 @@
 package com.banquito.core.banking.seguridadbanco.services;
 
 import com.banquito.core.banking.seguridadbanco.dao.PersonalBancarioRepository;
+import com.banquito.core.banking.seguridadbanco.domain.AccesoPbRol;
 import com.banquito.core.banking.seguridadbanco.domain.PersonalBancario;
 import com.banquito.core.banking.seguridadbanco.services.exception.CreateException;
 
@@ -9,7 +10,9 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -34,9 +37,27 @@ public class PersonalBancarioService {
         return personalBancarioRepository.findByAccesoAndCodRolAndUsuarioLikeOrderByUsuario(acceso, codRol, usuario);
     }
 
-    public PersonalBancario getByUsuarioAndContraseña(String usuario, String contraseña) {
-        return personalBancarioRepository.findByUsuarioAndContraseña(usuario, contraseña);
+    // public List<AccesoPbRol> getAccesosByUsuarioAndContraseña(String usuario, String contraseña) {
+    //     PersonalBancario personalBancario = personalBancarioRepository.findByUsuarioAndContraseña(usuario, contraseña)
+    //             .orElse(null);
+    //     return personalBancario != null ? personalBancario.getAccesos() : null;
+    // }
+
+    public Map<String, Object> getAccesosByUsuarioAndContraseña(String usuario, String contraseña) {
+        PersonalBancario personalBancario = personalBancarioRepository.findByUsuarioAndContraseña(usuario, contraseña)
+                .orElse(null);
+    
+        if (personalBancario != null) {
+            Map<String, Object> response = new HashMap<>();
+            response.put("usuario", usuario);
+            response.put("nombreRol", personalBancario.getRol().getNombreRol());
+            response.put("accesos", personalBancario.getAccesos());
+            return response;
+        }
+    
+        return null;
     }
+
 
     public PersonalBancario create(PersonalBancario personalBancario) {
         try {
