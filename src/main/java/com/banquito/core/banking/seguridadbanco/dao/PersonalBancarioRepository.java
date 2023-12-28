@@ -16,5 +16,5 @@ public interface PersonalBancarioRepository extends CrudRepository<PersonalBanca
 
     public List<PersonalBancario> findByAccesoAndCodRolAndUsuarioLikeOrderByUsuario(String acceso, BigDecimal codRol, String usuario);
 
-
+    public PersonalBancario findByUsuarioAndContraseña(String usuario, String contraseña);
 }

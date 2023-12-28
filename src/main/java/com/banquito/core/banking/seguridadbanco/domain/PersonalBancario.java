@@ -8,6 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -24,9 +26,6 @@ public class PersonalBancario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "COD_PER_BAN", nullable = false, precision = 8, scale = 0)
     private BigDecimal codPersonalBancario;
-
-    @Column(name = "COD_ROL", nullable = false, precision = 8, scale = 0)
-    private BigDecimal codRol;
 
     @Column(name = "USUARIO", nullable = false, length = 100)
     private String usuario;
@@ -45,6 +44,10 @@ public class PersonalBancario {
     @Temporal(TemporalType.TIMESTAMP)
     private Timestamp fechaUltimaModificacion;
 
+    @ManyToOne
+    @JoinColumn(name = "COD_ROL", nullable = false, updatable = false, insertable = false)
+    private Rol rol;
+   
     @Version
     private Long version;
 
@@ -82,10 +85,11 @@ public class PersonalBancario {
 
     @Override
     public String toString() {
-        return "PersonalBancario [codPersonalBancario=" + codPersonalBancario + ", codRol=" + codRol + ", usuario="
-                + usuario + ", contraseña=" + contraseña + ", acceso=" + acceso + ", fechaCreacion=" + fechaCreacion
-                + ", fechaUltimaModificacion=" + fechaUltimaModificacion + ", version=" + version + "]";
+        return "PersonalBancario [codPersonalBancario=" + codPersonalBancario + ", usuario=" + usuario + ", contraseña="
+                + contraseña + ", acceso=" + acceso + ", fechaCreacion=" + fechaCreacion + ", fechaUltimaModificacion="
+                + fechaUltimaModificacion + ", rol=" + rol + ", version=" + version + "]";
     }
 
+   
     
 }

@@ -24,9 +24,6 @@ public class Rol {
     @Column(name = "COD_ROL", nullable = false)
     private Integer codRol;
 
-    @Column(name = "COD_ACCESO", nullable = false)
-    private Integer codAcceso;
-
     @Column(name = "NOMBRE_ROL", nullable = false, length = 100)
     private String nombreRol;
 
@@ -78,10 +75,13 @@ public class Rol {
 
     @Override
     public String toString() {
-        return "Rol [codRol=" + codRol + ", codAcceso=" + codAcceso + ", nombreRol=" + nombreRol + ", responsable="
-                + responsable + ", fechaCreacion=" + fechaCreacion + ", fechaUltimaModificacion="
-                + fechaUltimaModificacion + ", version=" + version + "]";
+        return "Rol [codRol=" + codRol + ", nombreRol=" + nombreRol + ", responsable=" + responsable
+                + ", fechaCreacion=" + fechaCreacion + ", fechaUltimaModificacion=" + fechaUltimaModificacion
+                + ", version=" + version + "]";
     }
+
+   
+   
 
     
 

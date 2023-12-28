@@ -3,10 +3,8 @@ package com.banquito.core.banking.seguridadbanco.domain;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -17,16 +15,19 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "ACCESO")
-public class Acceso {
+@Table(name = "ACCESO_PB_ROL")
+public class AccesoPbRol {
+    @EmbeddedId
+    private AccesoPbRolPK PK;
+    
+    @Column(name = "NOMBRE", nullable = false, length = 100)
+    private String nombre;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "COD_ACCESO", nullable = false, precision = 8, scale = 0)
-    private BigDecimal codAcceso;
+    @Column(name = "ESTADO", nullable = false, length = 100)
+    private String estado;
 
-    @Column(name = "VISTA", nullable = false, length = 100)
-    private String vista;
+    @Column(name = "INTENTOS_ERROR", nullable = false, precision = 8, scale = 0)
+    private BigDecimal intentosError;
 
     @Column(name = "FECHA_CREACION", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -39,18 +40,18 @@ public class Acceso {
     @Version
     private Long version;
 
-    public Acceso() {
+    public AccesoPbRol() {
     }
 
-    public Acceso(BigDecimal codAcceso) {
-        this.codAcceso = codAcceso;
+    public AccesoPbRol(AccesoPbRolPK pK) {
+        PK = pK;
     }
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((codAcceso == null) ? 0 : codAcceso.hashCode());
+        result = prime * result + ((PK == null) ? 0 : PK.hashCode());
         return result;
     }
 
@@ -62,19 +63,25 @@ public class Acceso {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Acceso other = (Acceso) obj;
-        if (codAcceso == null) {
-            if (other.codAcceso != null)
+        AccesoPbRol other = (AccesoPbRol) obj;
+        if (PK == null) {
+            if (other.PK != null)
                 return false;
-        } else if (!codAcceso.equals(other.codAcceso))
+        } else if (!PK.equals(other.PK))
             return false;
         return true;
     }
 
     @Override
     public String toString() {
-        return "Acceso [codAcceso=" + codAcceso + ", vista=" + vista + ", fechaCreacion=" + fechaCreacion
-                + ", fechaUltimaModificacion=" + fechaUltimaModificacion + ", version=" + version + "]";
+        return "AccesoPbRol [PK=" + PK + ", nombre=" + nombre + ", estado=" + estado + ", intentosError="
+                + intentosError + ", fechaCreacion=" + fechaCreacion + ", fechaUltimaModificacion="
+                + fechaUltimaModificacion + ", version=" + version + "]";
     }
+
+
+   
+
+    
 
 }
