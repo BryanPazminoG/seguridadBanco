@@ -1,6 +1,8 @@
 package com.banquito.core.banking.seguridadbanco.controller;
 
 
+import java.math.BigDecimal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +23,7 @@ public class RolController {
     private RolService rolService;
 
     @GetMapping("/{codRol}")
-    public Rol getRolByCodRol(@PathVariable Integer codRol) {
+    public Rol getRolByCodRol(@PathVariable BigDecimal codRol) {
         return rolService.findByCodRol(codRol);
     }
 
@@ -32,7 +34,7 @@ public class RolController {
     }
 
     @DeleteMapping("/{codRol}")
-    public void deleteRol(@PathVariable Integer codRol) {
+    public void deleteRol(@PathVariable BigDecimal codRol) {
         rolService.deleteRol(codRol);
     }
 }

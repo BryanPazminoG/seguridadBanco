@@ -1,5 +1,6 @@
 package com.banquito.core.banking.seguridadbanco.domain;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 import jakarta.persistence.Column;
@@ -22,7 +23,7 @@ public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "COD_ROL", nullable = false)
-    private Integer codRol;
+    private BigDecimal codRol;
 
     @Column(name = "NOMBRE_ROL", nullable = false, length = 100)
     private String nombreRol;
@@ -44,7 +45,7 @@ public class Rol {
     public Rol() {
     }
 
-    public Rol(Integer codRol) {
+    public Rol(BigDecimal codRol) {
         this.codRol = codRol;
     }
 

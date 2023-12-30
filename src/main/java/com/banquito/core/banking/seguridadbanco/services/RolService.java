@@ -1,6 +1,7 @@
 package com.banquito.core.banking.seguridadbanco.services;
 
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +20,11 @@ public class RolService {
         return (List<Rol>) rolRepository.findAll();
     }
 
-    public Rol findByCodRol(Integer codRol) {
+    public Rol findByCodRol(BigDecimal codRol) {
         return rolRepository.findById(codRol).orElse(null);
     }
 
-    public List<Rol> findByCodRolOrderByCodRol(Integer codRol) {
+    public List<Rol> findByCodRolOrderByCodRol(BigDecimal codRol) {
         return rolRepository.findByCodRolOrderByCodRol(codRol);
     }
 
@@ -31,7 +32,7 @@ public class RolService {
         return rolRepository.findByNombreRolAndResponsableOrderByFechaCreacion(nombreRol, responsable);
     }
 
-    public List<Rol> findByCodRolAndResponsableOrderByNombreRol(Integer codRol, String responsable) {
+    public List<Rol> findByCodRolAndResponsableOrderByNombreRol(BigDecimal codRol, String responsable) {
         return rolRepository.findByCodRolAndResponsableOrderByNombreRol(codRol, responsable);
     }
 
@@ -39,7 +40,7 @@ public class RolService {
         rolRepository.save(rol);
     }
 
-    public void deleteRol(Integer codRol) {
+    public void deleteRol(BigDecimal codRol) {
         rolRepository.deleteById(codRol);
     }
     

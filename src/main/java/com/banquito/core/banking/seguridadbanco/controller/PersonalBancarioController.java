@@ -27,11 +27,6 @@ public class PersonalBancarioController {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping("/getbyusuarioandcodrol")
-    public ResponseEntity<List<PersonalBancario>> getByUsuarioAndCodRol(
-            @RequestParam String usuario, @RequestParam BigDecimal codRol) {
-        return new ResponseEntity<>(personalBancarioService.getByUsuarioAndCodRol(usuario, codRol), HttpStatus.OK);
-    }
 
     @GetMapping("/getbyfechacreacionbetween")
     public ResponseEntity<List<PersonalBancario>> getByFechaCreacionBetween(
@@ -40,12 +35,7 @@ public class PersonalBancarioController {
                 HttpStatus.OK);
     }
 
-    @GetMapping("/getbyaccesocodrolusuariolike")
-    public ResponseEntity<List<PersonalBancario>> getByAccesoAndCodRolAndUsuarioLike(
-            @RequestParam String acceso, @RequestParam BigDecimal codRol, @RequestParam String usuario) {
-        return new ResponseEntity<>(personalBancarioService.getByAccesoAndCodRolAndUsuarioLike(acceso, codRol, usuario),
-                HttpStatus.OK);
-    }
+
 
     // @GetMapping("/accesos")
     // public ResponseEntity<List<AccesoPbRol>> getAccesosByUsuarioAndContraseña(

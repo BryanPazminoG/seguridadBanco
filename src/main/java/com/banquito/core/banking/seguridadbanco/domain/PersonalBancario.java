@@ -50,7 +50,7 @@ public class PersonalBancario {
     @JoinColumn(name = "COD_ROL", nullable = false, updatable = false, insertable = false)
     private Rol rol;
     
-   @OneToMany(mappedBy = "personalBancario")
+    @OneToMany(mappedBy = "personalBancario")
     private List<AccesoPbRol> accesos;
 
     @Version

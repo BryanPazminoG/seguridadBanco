@@ -25,23 +25,11 @@ public class PersonalBancarioService {
         return personalBancarioRepository.findById(id);
     }
 
-    public List<PersonalBancario> getByUsuarioAndCodRol(String usuario, BigDecimal codRol) {
-        return personalBancarioRepository.findByUsuarioAndCodRol(usuario, codRol);
-    }
 
     public List<PersonalBancario> getByFechaCreacionBetween(Timestamp fechaInicio, Timestamp fechaFin) {
         return personalBancarioRepository.findByFechaCreacionBetween(fechaInicio, fechaFin);
     }
 
-    public List<PersonalBancario> getByAccesoAndCodRolAndUsuarioLike(String acceso, BigDecimal codRol, String usuario) {
-        return personalBancarioRepository.findByAccesoAndCodRolAndUsuarioLikeOrderByUsuario(acceso, codRol, usuario);
-    }
-
-    // public List<AccesoPbRol> getAccesosByUsuarioAndContraseña(String usuario, String contraseña) {
-    //     PersonalBancario personalBancario = personalBancarioRepository.findByUsuarioAndContraseña(usuario, contraseña)
-    //             .orElse(null);
-    //     return personalBancario != null ? personalBancario.getAccesos() : null;
-    // }
 
     public Map<String, Object> getAccesosByUsuarioAndClave(String usuario, String clave) {
         PersonalBancario personalBancario = personalBancarioRepository.findByUsuarioAndClave(usuario, clave)

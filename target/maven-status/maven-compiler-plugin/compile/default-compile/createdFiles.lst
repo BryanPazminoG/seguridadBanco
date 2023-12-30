@@ -1,0 +1,6 @@
+com\banquito\core\banking\seguridadbanco\domain\AccesoPbRol.class
+com\banquito\core\banking\seguridadbanco\domain\AccesoPbRolPK.class
+com\banquito\core\banking\seguridadbanco\dao\RolRepository.class
+com\banquito\core\banking\seguridadbanco\domain\Rol.class
+com\banquito\core\banking\seguridadbanco\SeguridadbancoApplication.class
+com\banquito\core\banking\seguridadbanco\domain\PersonalBancario.class
