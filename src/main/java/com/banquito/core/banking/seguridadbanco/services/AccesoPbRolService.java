@@ -1,5 +1,6 @@
 package com.banquito.core.banking.seguridadbanco.services;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
@@ -20,7 +21,7 @@ public class AccesoPbRolService {
         this.accesoPbRolRepository = accesoPbRolRepository;
     }
 
-    public Optional<AccesoPbRol> getById(Integer codRol, Integer codPerBan) {
+    public Optional<AccesoPbRol> getById(BigDecimal codRol, BigDecimal codPerBan) {
         AccesoPbRolPK accesoPbRolPK = new AccesoPbRolPK(codRol, codPerBan);
         return this.accesoPbRolRepository.findById(accesoPbRolPK);
     }
@@ -34,7 +35,7 @@ public class AccesoPbRolService {
         }
     }
 
-    public void delete(Integer codRol, Integer codPerBan) {
+    public void delete(BigDecimal codRol, BigDecimal codPerBan) {
         try {
             Optional<AccesoPbRol> accesoPbRol = getById(codRol, codPerBan);
             if (accesoPbRol.isPresent()) {
