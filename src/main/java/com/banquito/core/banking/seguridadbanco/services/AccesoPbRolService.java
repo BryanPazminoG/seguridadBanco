@@ -4,7 +4,6 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.banquito.core.banking.seguridadbanco.dao.AccesoPbRolRepository;
@@ -15,7 +14,6 @@ import com.banquito.core.banking.seguridadbanco.services.exception.CreateExcepti
 @Service
 public class AccesoPbRolService {
 
-    @Autowired
     private AccesoPbRolRepository accesoPbRolRepository;
 
     public AccesoPbRolService(AccesoPbRolRepository accesoPbRolRepository) {

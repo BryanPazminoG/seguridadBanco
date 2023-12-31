@@ -3,7 +3,6 @@ package com.banquito.core.banking.seguridadbanco.controller;
 // import com.banquito.core.banking.seguridadbanco.domain.AccesoPbRol;
 import com.banquito.core.banking.seguridadbanco.domain.PersonalBancario;
 import com.banquito.core.banking.seguridadbanco.services.PersonalBancarioService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +16,6 @@ import java.util.Map;
 @RequestMapping("/personal-bancario")
 public class PersonalBancarioController {
 
-    @Autowired
     private PersonalBancarioService personalBancarioService;
 
     @GetMapping("/getbyid/{id}")
@@ -35,17 +33,6 @@ public class PersonalBancarioController {
                 HttpStatus.OK);
     }
 
-
-
-    // @GetMapping("/accesos")
-    // public ResponseEntity<List<AccesoPbRol>> getAccesosByUsuarioAndContraseña(
-    //         @RequestParam String usuario, @RequestParam String contraseña) {
-    //     List<AccesoPbRol> accesos = personalBancarioService.getAccesosByUsuarioAndContraseña(usuario, contraseña);
-
-    //     return accesos != null
-    //             ? new ResponseEntity<>(accesos, HttpStatus.OK)
-    //             : new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    // }
 
     @GetMapping("/accesos")
     public ResponseEntity<Map<String, Object>> getAccesosByUsuarioAndContraseña(

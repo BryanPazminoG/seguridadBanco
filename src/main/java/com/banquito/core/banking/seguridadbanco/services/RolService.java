@@ -4,7 +4,6 @@ package com.banquito.core.banking.seguridadbanco.services;
 import java.math.BigDecimal;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.banquito.core.banking.seguridadbanco.dao.RolRepository;
@@ -13,7 +12,6 @@ import com.banquito.core.banking.seguridadbanco.domain.Rol;
 @Service
 public class RolService {
 
-    @Autowired
     private RolRepository rolRepository;
 
     public List<Rol> findAll() {

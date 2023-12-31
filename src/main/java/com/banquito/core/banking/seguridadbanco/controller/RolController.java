@@ -1,9 +1,9 @@
 package com.banquito.core.banking.seguridadbanco.controller;
 
 
+import java.math.BigDecimal;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +20,6 @@ import com.banquito.core.banking.seguridadbanco.services.RolService;
 @RequestMapping("/rol")
 public class RolController {
 
-    @Autowired
     private RolService rolService;
 
     @GetMapping
@@ -29,12 +28,12 @@ public class RolController {
     }
 
     @GetMapping("/{codRol}")
-    public Rol getRolByCodRol(@PathVariable Integer codRol) {
+    public Rol getRolByCodRol(@PathVariable BigDecimal codRol) {
         return rolService.findByCodRol(codRol);
     }
 
     @GetMapping("/byCodRol/{codRol}")
-    public List<Rol> getRolesByCodRol(@PathVariable Integer codRol) {
+    public List<Rol> getRolesByCodRol(@PathVariable BigDecimal codRol) {
         return rolService.findByCodRolOrderByCodRol(codRol);
     }
 
@@ -47,7 +46,7 @@ public class RolController {
 
     @GetMapping("/byCodRolAndResponsable")
     public List<Rol> getRolesByCodRolAndResponsable(
-            @RequestParam Integer codRol,
+            @RequestParam BigDecimal codRol,
             @RequestParam String responsable) {
         return rolService.findByCodRolAndResponsableOrderByNombreRol(codRol, responsable);
     }
@@ -58,7 +57,7 @@ public class RolController {
     }
 
     @DeleteMapping("/{codRol}")
-    public void deleteRol(@PathVariable Integer codRol) {
+    public void deleteRol(@PathVariable BigDecimal codRol) {
         rolService.deleteRol(codRol);
     }
 }

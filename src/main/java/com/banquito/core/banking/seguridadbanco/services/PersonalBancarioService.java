@@ -5,7 +5,6 @@ import com.banquito.core.banking.seguridadbanco.dao.PersonalBancarioRepository;
 import com.banquito.core.banking.seguridadbanco.domain.PersonalBancario;
 import com.banquito.core.banking.seguridadbanco.services.exception.CreateException;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -18,7 +17,7 @@ import java.util.Optional;
 @Service
 public class PersonalBancarioService {
 
-    @Autowired
+  
     private PersonalBancarioRepository personalBancarioRepository;
 
     public Optional<PersonalBancario> getById(BigDecimal id) {

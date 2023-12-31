@@ -16,7 +16,7 @@ import com.banquito.core.banking.seguridadbanco.services.AccesoPbRolService;
 
 
 @RestController
-@RequestMapping("/Acceso")
+@RequestMapping("/acceso")
 public class AccesoPbRolController {
     @Autowired
     private AccesoPbRolService accesoPbRolService;
