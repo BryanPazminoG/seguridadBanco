@@ -8,12 +8,11 @@ import com.banquito.core.banking.seguridadbanco.domain.AccesoPbRol;
 import com.banquito.core.banking.seguridadbanco.domain.AccesoPbRolPK;
 
 @Repository
-public interface AccesoPbRolRepository extends CrudRepository<AccesoPbRol, AccesoPbRolPK> {
+public interface AccesoPbRolRepository extends CrudRepository<AccesoPbRol, AccesoPbRolPK>{
 
     public List<AccesoPbRol> findByNombre(String nombre);
 
-    public List<AccesoPbRol> findByNombreOrderByFechaCreacion(String vista);
+    public List<AccesoPbRol> findByNombreOrderByFechaCreacion(String nombre);
 
-    public List<AccesoPbRol> findByNombreAndFechaCreacionBetween(String vista, Timestamp fechaInicio, Timestamp fechaFin);
-
+    public List<AccesoPbRol> findByNombreAndFechaCreacionBetween(String nombre, Timestamp fechaCreacion, Timestamp fechaUltimaModificacion);
 }

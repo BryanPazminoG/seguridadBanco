@@ -1,7 +1,7 @@
 package com.banquito.core.banking.seguridadbanco.controller;
 
 
-import java.math.BigDecimal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.banquito.core.banking.seguridadbanco.domain.Rol;
@@ -22,11 +23,34 @@ public class RolController {
     @Autowired
     private RolService rolService;
 
+    @GetMapping
+    public List<Rol> getAllRoles() {
+        return rolService.findAll();
+    }
+
     @GetMapping("/{codRol}")
-    public Rol getRolByCodRol(@PathVariable BigDecimal codRol) {
+    public Rol getRolByCodRol(@PathVariable Integer codRol) {
         return rolService.findByCodRol(codRol);
     }
 
+    @GetMapping("/byCodRol/{codRol}")
+    public List<Rol> getRolesByCodRol(@PathVariable Integer codRol) {
+        return rolService.findByCodRolOrderByCodRol(codRol);
+    }
+
+    @GetMapping("/byNombreAndResponsable")
+    public List<Rol> getRolesByNombreAndResponsable(
+            @RequestParam String nombreRol,
+            @RequestParam String responsable) {
+        return rolService.findByNombreRolAndResponsableOrderByFechaCreacion(nombreRol, responsable);
+    }
+
+    @GetMapping("/byCodRolAndResponsable")
+    public List<Rol> getRolesByCodRolAndResponsable(
+            @RequestParam Integer codRol,
+            @RequestParam String responsable) {
+        return rolService.findByCodRolAndResponsableOrderByNombreRol(codRol, responsable);
+    }
 
     @PostMapping
     public void saveRol(@RequestBody Rol rol) {
@@ -34,7 +58,7 @@ public class RolController {
     }
 
     @DeleteMapping("/{codRol}")
-    public void deleteRol(@PathVariable BigDecimal codRol) {
+    public void deleteRol(@PathVariable Integer codRol) {
         rolService.deleteRol(codRol);
     }
 }
