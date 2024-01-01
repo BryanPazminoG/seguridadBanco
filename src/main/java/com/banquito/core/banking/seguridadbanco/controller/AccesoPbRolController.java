@@ -1,6 +1,6 @@
 package com.banquito.core.banking.seguridadbanco.controller;
 
-import java.math.BigDecimal;
+
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -30,8 +30,8 @@ public class AccesoPbRolController {
     }
 
     @GetMapping("/getbyid/{codRol}/{codPerBan}")
-    public ResponseEntity<AccesoPbRol> getById(@PathVariable("codRol") BigDecimal codRol,
-            @PathVariable("codPerBan") BigDecimal codPerBan) {
+    public ResponseEntity<AccesoPbRol> getById(@PathVariable("codRol") Integer codRol,
+            @PathVariable("codPerBan") Integer codPerBan) {
         return accesoPbRolService.getById( codPerBan, codRol)
                 .map(register -> new ResponseEntity<>(register, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
@@ -44,7 +44,7 @@ public class AccesoPbRolController {
     }
 
     @DeleteMapping("/delete/{codRol}/{codPerBan}")
-    public ResponseEntity<String> delete(@PathVariable BigDecimal codRol, @PathVariable BigDecimal codPerBan) {
+    public ResponseEntity<String> delete(@PathVariable Integer codRol, @PathVariable Integer codPerBan) {
         accesoPbRolService.delete(codRol, codPerBan);
         return ResponseEntity.ok("Acceso eliminado exitosamente");
     }

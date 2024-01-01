@@ -7,7 +7,7 @@ import com.banquito.core.banking.seguridadbanco.services.exception.CreateExcepti
 
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
+
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
@@ -17,10 +17,10 @@ import java.util.Optional;
 @Service
 public class PersonalBancarioService {
 
-  
+
     private PersonalBancarioRepository personalBancarioRepository;
 
-    public Optional<PersonalBancario> getById(BigDecimal id) {
+    public Optional<PersonalBancario> getById(Integer id) {
         return personalBancarioRepository.findById(id);
     }
 
@@ -30,20 +30,20 @@ public class PersonalBancarioService {
     }
 
 
-    public Map<String, Object> getAccesosByUsuarioAndClave(String usuario, String clave) {
-        PersonalBancario personalBancario = personalBancarioRepository.findByUsuarioAndClave(usuario, clave)
-                .orElse(null);
+    // public Map<String, Object> getAccesosByUsuarioAndClave(String usuario, String clave) {
+    //     PersonalBancario personalBancario = personalBancarioRepository.findByUsuarioAndClave(usuario, clave)
+    //             .orElse(null);
     
-        if (personalBancario != null) {
-            Map<String, Object> response = new HashMap<>();
-            response.put("usuario", usuario);
-            response.put("nombreRol", personalBancario.getRol().getNombreRol());
-            response.put("accesos", personalBancario.getAccesos());
-            return response;
-        }
+    //     if (personalBancario != null) {
+    //         Map<String, Object> response = new HashMap<>();
+    //         response.put("usuario", usuario);
+    //         response.put("nombreRol", personalBancario.getRol().getNombreRol());
+    //         response.put("accesos", personalBancario.getAccesos());
+    //         return response;
+    //     }
     
-        return null;
-    }
+    //     return null;
+    // }
 
 
     public PersonalBancario create(PersonalBancario personalBancario) {
@@ -54,7 +54,7 @@ public class PersonalBancarioService {
         }
     }
 
-    public void delete(BigDecimal id) {
+    public void delete(Integer id) {
         try {
             Optional<PersonalBancario> personalBancario = getById(id);
             if (personalBancario.isPresent()) {

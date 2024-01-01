@@ -1,8 +1,6 @@
 package com.banquito.core.banking.seguridadbanco.domain;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import lombok.Getter;
@@ -13,15 +11,15 @@ import lombok.Setter;
 @Embeddable
 public class AccesoPbRolPK implements Serializable{
     @Column(name="COD_ROL", nullable=false)
-    private BigDecimal codRol;
+    private Integer codRol;
     @Column(name="COD_PER_BAN", nullable = false)
-    private BigDecimal codPerBan;
+    private Integer codPerBan;
 
     
     public AccesoPbRolPK() {
     }
 
-    public AccesoPbRolPK(BigDecimal codRol, BigDecimal codPerBan) {
+    public AccesoPbRolPK(Integer codRol, Integer codPerBan) {
         this.codRol = codRol;
         this.codPerBan = codPerBan;
     }

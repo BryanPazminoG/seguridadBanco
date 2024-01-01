@@ -1,6 +1,5 @@
 package com.banquito.core.banking.seguridadbanco.domain;
 
-import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -27,7 +26,7 @@ public class PersonalBancario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "COD_PER_BAN", nullable = false, precision = 8, scale = 0)
-    private BigDecimal codPersonalBancario;
+    private Integer codPersonalBancario;
 
     @Column(name = "USUARIO", nullable = false, length = 100)
     private String usuario;
@@ -45,10 +44,6 @@ public class PersonalBancario {
     @Column(name = "FECHA_ULTIMA_MODIFICACION", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Timestamp fechaUltimaModificacion;
-
-    @ManyToOne
-    @JoinColumn(name = "COD_ROL", nullable = false, updatable = false, insertable = false)
-    private Rol rol;
     
     @OneToMany(mappedBy = "personalBancario")
     private List<AccesoPbRol> accesos;
@@ -59,7 +54,7 @@ public class PersonalBancario {
     public PersonalBancario(){
     }
 
-    public PersonalBancario(BigDecimal codPersonalBancario) {
+    public PersonalBancario(Integer codPersonalBancario) {
         this.codPersonalBancario = codPersonalBancario;
     }
 
@@ -92,7 +87,7 @@ public class PersonalBancario {
     public String toString() {
         return "PersonalBancario [codPersonalBancario=" + codPersonalBancario + ", usuario=" + usuario + ", clave="
                 + clave + ", acceso=" + acceso + ", fechaCreacion=" + fechaCreacion + ", fechaUltimaModificacion="
-                + fechaUltimaModificacion + ", rol=" + rol + ", accesos=" + accesos + ", version=" + version + "]";
+                + fechaUltimaModificacion + ", accesos=" + accesos + ", version=" + version + "]";
     }
 
    

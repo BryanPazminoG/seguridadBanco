@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
+
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +19,7 @@ public class PersonalBancarioController {
     private PersonalBancarioService personalBancarioService;
 
     @GetMapping("/getbyid/{id}")
-    public ResponseEntity<PersonalBancario> getById(@PathVariable("id") BigDecimal id) {
+    public ResponseEntity<PersonalBancario> getById(@PathVariable("id") Integer id) {
         return personalBancarioService.getById(id)
                 .map(register -> new ResponseEntity<>(register, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
@@ -34,16 +34,16 @@ public class PersonalBancarioController {
     }
 
 
-    @GetMapping("/accesos")
-    public ResponseEntity<Map<String, Object>> getAccesosByUsuarioAndContraseña(
-            @RequestParam String usuario, @RequestParam String clave) {
-        Map<String, Object> response = personalBancarioService.getAccesosByUsuarioAndClave(usuario, clave);
+    // @GetMapping("/accesos")
+    // public ResponseEntity<Map<String, Object>> getAccesosByUsuarioAndContraseña(
+    //         @RequestParam String usuario, @RequestParam String clave) {
+    //     Map<String, Object> response = personalBancarioService.getAccesosByUsuarioAndClave(usuario, clave);
 
-        return response != null
-                ? new ResponseEntity<>(response, HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-
+    //     return response != null
+    //             ? new ResponseEntity<>(response, HttpStatus.OK)
+    //             : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    // }
+    
 
     @PostMapping("/create")
     public ResponseEntity<PersonalBancario> create(@RequestBody PersonalBancario personalBancario) {
@@ -51,7 +51,7 @@ public class PersonalBancarioController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Boolean> delete(@PathVariable BigDecimal id) {
+    public ResponseEntity<Boolean> delete(@PathVariable Integer id) {
         personalBancarioService.delete(id);
         return new ResponseEntity<>(true, HttpStatus.OK);
     }
