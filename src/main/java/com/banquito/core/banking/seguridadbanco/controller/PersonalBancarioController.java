@@ -37,7 +37,13 @@ public class PersonalBancarioController {
                 HttpStatus.OK);
     }
 
+    @GetMapping("/verificar-credenciales")
+    public ResponseEntity<Map<String, Object>> verificarCredenciales(
+        @RequestParam String usuario, @RequestParam String clave) {
+    Map<String, Object> response = personalBancarioService.verificarCredenciales(usuario, clave);
 
+    return new ResponseEntity<>(response, HttpStatus.OK);
+    }
     // @GetMapping("/accesos")
     // public ResponseEntity<Map<String, Object>> getAccesosByUsuarioAndContraseña(
     //         @RequestParam String usuario, @RequestParam String clave) {

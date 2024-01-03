@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 
 
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -32,7 +34,21 @@ public class PersonalBancarioService {
         return this.personalBancarioRepository.findByFechaCreacionBetween(fechaInicio, fechaFin);
     }
 
+    public Map<String, Object> verificarCredenciales(String usuario, String clave) {
+        Optional<PersonalBancario> personalBancario = personalBancarioRepository.findByUsuarioAndClave(usuario, clave);
 
+        if (personalBancario.isPresent()) {
+            Map<String, Object> response = new HashMap<>();
+            response.put("mensaje", "Credenciales válidas");
+            response.put("usuario", usuario);
+            return response;
+        } else {
+            Map<String, Object> response = new HashMap<>();
+            response.put("mensaje", "Credenciales inválidas");
+            return response;
+        }
+    }
+    
     // public Map<String, Object> getAccesosByUsuarioAndClave(String usuario, String clave) {
     //     PersonalBancario personalBancario = personalBancarioRepository.findByUsuarioAndClave(usuario, clave)
     //             .orElse(null);
