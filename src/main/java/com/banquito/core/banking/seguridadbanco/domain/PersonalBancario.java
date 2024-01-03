@@ -1,7 +1,6 @@
 package com.banquito.core.banking.seguridadbanco.domain;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
