@@ -1,6 +1,5 @@
 package com.banquito.core.banking.seguridadbanco.controller;
 
-// import com.banquito.core.banking.seguridadbanco.domain.AccesoPbRol;
 import com.banquito.core.banking.seguridadbanco.domain.PersonalBancario;
 import com.banquito.core.banking.seguridadbanco.services.PersonalBancarioService;
 import org.springframework.http.HttpStatus;
@@ -10,8 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.Map;
-
 @RestController
 @RequestMapping("/personal-bancario")
 public class PersonalBancarioController {
