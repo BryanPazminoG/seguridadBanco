@@ -16,6 +16,11 @@ public class PersonalBancarioController {
 
     private PersonalBancarioService personalBancarioService;
 
+    public PersonalBancarioController(PersonalBancarioService personalBancarioService) {
+        this.personalBancarioService = personalBancarioService;
+    }
+
+
     @GetMapping("/getbyid/{id}")
     public ResponseEntity<PersonalBancario> getById(@PathVariable("id") Integer id) {
         return personalBancarioService.getById(id)

@@ -40,11 +40,11 @@ public class AccesoPbRol {
     private Timestamp fechaUltimaModificacion;
 
     @ManyToOne
-    @JoinColumn(name = "COD_ROL", referencedColumnName = "COD_ROL", insertable = false, updatable = false)
+    @JoinColumn(name = "COD_ROL", insertable = false, updatable = false)
     private Rol rol;
 
     @ManyToOne
-    @JoinColumn(name = "COD_PER_BAN", referencedColumnName = "COD_PER_BAN", insertable = false, updatable = false)
+    @JoinColumn(name = "COD_PER_BAN", insertable = false, updatable = false)
     private PersonalBancario personalBancario;
 
 

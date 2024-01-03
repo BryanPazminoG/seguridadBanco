@@ -15,7 +15,7 @@ public class AccesoPbRolPK implements Serializable{
     @Column(name="COD_PER_BAN", nullable = false)
     private Integer codPerBan;
 
-    
+
     public AccesoPbRolPK() {
     }
 

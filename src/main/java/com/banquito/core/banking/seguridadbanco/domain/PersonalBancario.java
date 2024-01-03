@@ -8,11 +8,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.persistence.Version;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -42,9 +42,6 @@ public class PersonalBancario {
     @Column(name = "FECHA_ULTIMA_MODIFICACION", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Timestamp fechaUltimaModificacion;
-    
-    @OneToMany(mappedBy = "personalBancario")
-    private List<AccesoPbRol> accesos;
 
     @Version
     private Long version;
@@ -85,7 +82,7 @@ public class PersonalBancario {
     public String toString() {
         return "PersonalBancario [codPersonalBancario=" + codPersonalBancario + ", usuario=" + usuario + ", clave="
                 + clave + ", acceso=" + acceso + ", fechaCreacion=" + fechaCreacion + ", fechaUltimaModificacion="
-                + fechaUltimaModificacion + ", accesos=" + accesos + ", version=" + version + "]";
+                + fechaUltimaModificacion  + ", version=" + version + "]";
     }
 
    

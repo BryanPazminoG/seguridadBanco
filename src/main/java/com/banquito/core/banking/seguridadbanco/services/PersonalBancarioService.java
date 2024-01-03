@@ -17,13 +17,19 @@ public class PersonalBancarioService {
 
     private PersonalBancarioRepository personalBancarioRepository;
 
+
+    public PersonalBancarioService(PersonalBancarioRepository personalBancarioRepository) {
+        this.personalBancarioRepository = personalBancarioRepository;
+    }
+
+
     public Optional<PersonalBancario> getById(Integer id) {
-        return personalBancarioRepository.findById(id);
+        return this.personalBancarioRepository.findById(id);
     }
 
 
     public List<PersonalBancario> getByFechaCreacionBetween(Timestamp fechaInicio, Timestamp fechaFin) {
-        return personalBancarioRepository.findByFechaCreacionBetween(fechaInicio, fechaFin);
+        return this.personalBancarioRepository.findByFechaCreacionBetween(fechaInicio, fechaFin);
     }
 
 
