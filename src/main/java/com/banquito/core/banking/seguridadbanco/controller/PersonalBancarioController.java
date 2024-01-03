@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Map;
 @CrossOrigin
 @RestController
 @RequestMapping("/personal-bancario")
@@ -63,4 +64,14 @@ public class PersonalBancarioController {
     public ResponseEntity<PersonalBancario> update(@RequestBody PersonalBancario personalBancario) {
         return new ResponseEntity<>(personalBancarioService.update(personalBancario), HttpStatus.OK);
     }
+
+    @PostMapping("/buscar-credenciales")
+    public ResponseEntity<PersonalBancario> buscarUsuario(@RequestBody Map<String, Object> requestBody) {
+        String usuario = (String) requestBody.get("usuario");
+        String clave = (String) requestBody.get("clave");
+
+        return new ResponseEntity<>(personalBancarioService.getAccesosByUsuarioAndClave(usuario, clave),
+                HttpStatus.OK);
+    } 
+
 }

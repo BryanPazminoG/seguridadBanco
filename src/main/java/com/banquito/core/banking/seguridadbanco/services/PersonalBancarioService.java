@@ -83,4 +83,22 @@ public class PersonalBancarioService {
             throw new CreateException("Ocurrió un error al actualizar el PersonalBancario, error: " + e.getMessage(), e);
         }
     }
+
+    public PersonalBancario getAccesosByUsuarioAndClave(String usuario, String clave) {
+
+        try {
+            Optional<PersonalBancario> personalBancario = personalBancarioRepository.findByUsuarioAndClave(usuario,
+                    clave);
+
+            if (personalBancario.isPresent()) {
+                PersonalBancario personalBancarioExistente = personalBancario.get();
+                return personalBancarioExistente;
+            } else {
+                throw new CreateException("No se encontro el personal Bancario: " + personalBancario.toString());
+            }
+
+        } catch (Exception e) {
+            throw new CreateException("Ocurrio un error al buscar al usuario: ", e);
+        }
+    }
 }
