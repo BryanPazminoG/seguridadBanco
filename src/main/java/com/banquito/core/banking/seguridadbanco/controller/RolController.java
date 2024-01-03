@@ -1,6 +1,6 @@
 package com.banquito.core.banking.seguridadbanco.controller;
 
-
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,10 +28,14 @@ public class RolController {
         return rolService.findByCodRol(codRol);
     }
 
+    @GetMapping("/buscar-todos/")
+    public List<Rol> buscarRoles() {
+        return rolService.findAll();
+    }
+
     @PostMapping("/crear")
     public void saveRol(@RequestBody Rol rol) {
         rolService.saveRol(rol);
     }
-
 
 }
