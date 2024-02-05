@@ -7,7 +7,6 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import com.banquito.core.banking.seguridadbanco.domain.Rol;
-import com.banquito.core.banking.seguridadbanco.dto.RolDTO;
 import com.banquito.core.banking.seguridadbanco.services.RolService;
 
 @Slf4j
@@ -20,9 +19,6 @@ public class RolController {
     public RolController(RolService rolService) {
         this.rolService = rolService;
     }
-
-
-
 
     @GetMapping
     public List<Rol> getAllRoles() {

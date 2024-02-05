@@ -1,7 +1,5 @@
 package com.banquito.core.banking.seguridadbanco.services;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -9,21 +7,18 @@ import java.util.List;
 
 import com.banquito.core.banking.seguridadbanco.dao.RolRepository;
 import com.banquito.core.banking.seguridadbanco.domain.Rol;
-import com.banquito.core.banking.seguridadbanco.dto.RolDTO;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 public class RolService {
-
-    private static final Logger log = LoggerFactory.getLogger(RolService.class);
 
     private RolRepository rolRepository;
 
     public RolService(RolRepository rolRepository) {
         this.rolRepository = rolRepository;
     }
-
-
-
 
     public List<Rol> findAll() {
         try {

@@ -2,7 +2,6 @@ package com.banquito.core.banking.seguridadbanco.controller;
 
 import lombok.extern.slf4j.Slf4j;
 
-import com.banquito.core.banking.seguridadbanco.domain.PersonalBancario;
 import com.banquito.core.banking.seguridadbanco.dto.PersonalBancarioDTO;
 import com.banquito.core.banking.seguridadbanco.services.PersonalBancarioService;
 
@@ -58,7 +57,7 @@ public class PersonalBancarioController {
     }
 
     @PutMapping
-    public ResponseEntity<PersonalBancario> update(@RequestBody PersonalBancarioDTO personalBancario) {
+    public ResponseEntity<PersonalBancarioDTO> update(@RequestBody PersonalBancarioDTO personalBancario) {
         try {
             log.info("Se va a actualizar el personal bancario: {}", personalBancario);
             personalBancarioService.actualizar(personalBancario);
@@ -68,5 +67,23 @@ public class PersonalBancarioController {
             return ResponseEntity.badRequest().build();
         }
     }
+
+
+    @PostMapping("/sesion")
+    public ResponseEntity<Boolean> validarUsuario(@RequestBody PersonalBancarioDTO presonalBancarioDTO){
+        try {
+            log.info("Validando si la infomracion enviada esta en base.");
+            boolean resultado = personalBancarioService.validarUsuarioClave(presonalBancarioDTO);
+            if (resultado) {
+                return ResponseEntity.ok(true);
+            } else {
+                return ResponseEntity.ok(false);
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(500).build();
+        }
+    }
+
+
 
 }

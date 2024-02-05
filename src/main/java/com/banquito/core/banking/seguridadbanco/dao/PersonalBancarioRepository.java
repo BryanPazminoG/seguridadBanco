@@ -1,7 +1,6 @@
 package com.banquito.core.banking.seguridadbanco.dao;
 
 import java.util.List;
-import java.util.Optional;
 import java.sql.Timestamp;
 
 import org.springframework.data.repository.CrudRepository;
@@ -13,5 +12,5 @@ import com.banquito.core.banking.seguridadbanco.domain.PersonalBancario;
 public interface PersonalBancarioRepository extends CrudRepository<PersonalBancario, Integer> {
     public PersonalBancario findByCodPersonalBancario(Integer codPersonalBancario);
     public List<PersonalBancario> findByFechaCreacionBetween(Timestamp fechaInicio, Timestamp fechaFin);
-    Optional<PersonalBancario> findByUsuarioAndClave(String usuario, String clave);
+    public PersonalBancario findByUsuarioAndClave(String usuario, String clave);
 }

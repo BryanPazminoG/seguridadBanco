@@ -1,6 +1,5 @@
 package com.banquito.core.banking.seguridadbanco.domain;
 
-import java.math.BigDecimal;
 import java.sql.Timestamp;
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
@@ -30,8 +29,8 @@ public class AccesoPbRol {
     @Column(name = "ESTADO", nullable = false, length = 100)
     private String estado;
 
-    @Column(name = "INTENTOS_ERROR", nullable = false, precision = 8, scale = 0)
-    private BigDecimal intentosError;
+    @Column(name = "INTENTOS_ERROR", nullable = false)
+    private Integer intentosError;
 
     @Column(name = "FECHA_CREACION", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -48,7 +47,6 @@ public class AccesoPbRol {
     @ManyToOne
     @JoinColumn(name = "COD_PER_BAN", referencedColumnName = "COD_PER_BAN", insertable = false, updatable = false)
     private PersonalBancario personalBancario;
-
 
     @Version
     private Long version;
@@ -88,10 +86,5 @@ public class AccesoPbRol {
                 + intentosError + ", fechaCreacion=" + fechaCreacion + ", fechaUltimaModificacion="
                 + fechaUltimaModificacion + ", version=" + version + "]";
     }
-
-
-   
-
-    
 
 }

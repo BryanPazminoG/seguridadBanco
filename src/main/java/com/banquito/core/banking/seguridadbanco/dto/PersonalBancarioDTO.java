@@ -15,15 +15,4 @@ public class PersonalBancarioDTO {
     private Date fechaCreacion;
     private Date fechaUltimaModificacion;
 
-    public PersonalBancarioDTO(Integer codPersonalBancario, String usuario, String clave, String acceso, Date fechaCreacion, Date fechaUltimaModificacion) {
-        this.codPersonalBancario = codPersonalBancario;
-        this.usuario = usuario;
-        this.clave = clave;
-        this.acceso = acceso;
-        this.fechaCreacion = fechaCreacion;
-        this.fechaUltimaModificacion = fechaUltimaModificacion;
-    }
-
-    
-    
 }

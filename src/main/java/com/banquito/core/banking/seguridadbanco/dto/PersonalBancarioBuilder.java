@@ -44,6 +44,12 @@ public class PersonalBancarioBuilder {
         PersonalBancarioDTO dto = PersonalBancarioDTO.builder().codPersonalBancario(personal.getCodPersonalBancario()).usuario(personal.getUsuario()).clave(personal.getClave()).acceso(personal.getAcceso()).fechaUltimaModificacion(personal.getFechaUltimaModificacion()).fechaCreacion(personal.getFechaCreacion()).build();
         return dto;
     }
+
+
+    public static PersonalBancarioDTO validarClave(PersonalBancario personal){
+        PersonalBancarioDTO dto = PersonalBancarioDTO.builder().usuario(personal.getUsuario()).clave(personal.getClave()).build();
+        return dto;
+    }
     
     
     
