@@ -1,63 +1,72 @@
 package com.banquito.core.banking.seguridadbanco.controller;
 
-// import com.banquito.core.banking.seguridadbanco.domain.AccesoPbRol;
+import lombok.extern.slf4j.Slf4j;
+
 import com.banquito.core.banking.seguridadbanco.domain.PersonalBancario;
+import com.banquito.core.banking.seguridadbanco.dto.PersonalBancarioDTO;
 import com.banquito.core.banking.seguridadbanco.services.PersonalBancarioService;
-import org.springframework.http.HttpStatus;
+
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
-import java.sql.Timestamp;
-import java.util.List;
-import java.util.Map;
 
+@Slf4j
 @RestController
-@RequestMapping("/personal-bancario")
+@RequestMapping("/api/v1/personal-bancario")
 public class PersonalBancarioController {
 
-    private PersonalBancarioService personalBancarioService;
+    private final PersonalBancarioService personalBancarioService;
 
-    @GetMapping("/getbyid/{id}")
-    public ResponseEntity<PersonalBancario> getById(@PathVariable("id") BigDecimal id) {
-        return personalBancarioService.getById(id)
-                .map(register -> new ResponseEntity<>(register, HttpStatus.OK))
-                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    public PersonalBancarioController(PersonalBancarioService personalBancarioService) {
+        this.personalBancarioService = personalBancarioService;
     }
 
-
-    @GetMapping("/getbyfechacreacionbetween")
-    public ResponseEntity<List<PersonalBancario>> getByFechaCreacionBetween(
-            @RequestParam Timestamp fechaInicio, @RequestParam Timestamp fechaFin) {
-        return new ResponseEntity<>(personalBancarioService.getByFechaCreacionBetween(fechaInicio, fechaFin),
-                HttpStatus.OK);
+    @GetMapping
+    public ResponseEntity<List<PersonalBancarioDTO>> listarTodos(){
+        try {
+            log.info("Va a listar todos los usuarios");
+            return ResponseEntity.ok(personalBancarioService.obtenerTodos());
+        } catch (RuntimeException rte) {
+            log.error("Error al crear un usuario de personal bancario.", rte);
+            return ResponseEntity.badRequest().build();
+        }
     }
 
-
-    @GetMapping("/accesos")
-    public ResponseEntity<Map<String, Object>> getAccesosByUsuarioAndContraseña(
-            @RequestParam String usuario, @RequestParam String clave) {
-        Map<String, Object> response = personalBancarioService.getAccesosByUsuarioAndClave(usuario, clave);
-
-        return response != null
-                ? new ResponseEntity<>(response, HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    @GetMapping("/{id}")
+    public ResponseEntity<PersonalBancarioDTO> getById(@PathVariable("id") Integer id) {
+        try {
+            log.info("Va a obtener Personal Bancario por ID: {}", id);
+            return ResponseEntity.ok(personalBancarioService.obtenerPorId(id));
+        } catch (RuntimeException rte) {
+            log.error("Error al obtener personal del banco por id", rte);
+            return ResponseEntity.badRequest().build();
+        }
     }
 
-
-    @PostMapping("/create")
-    public ResponseEntity<PersonalBancario> create(@RequestBody PersonalBancario personalBancario) {
-        return new ResponseEntity<>(personalBancarioService.create(personalBancario), HttpStatus.OK);
+    @PostMapping
+    public ResponseEntity<Void> agregarUsuario(@RequestBody PersonalBancarioDTO personalBancario) {
+        try {
+            log.info("Va a crear un usuario de personal bancario: {}", personalBancario);
+            personalBancarioService.crear(personalBancario);
+            return ResponseEntity.noContent().build();
+        } catch (RuntimeException rte){
+            log.error("Error al crear un usuario de personal bancario.", rte);
+            return ResponseEntity.badRequest().build();
+        }
     }
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Boolean> delete(@PathVariable BigDecimal id) {
-        personalBancarioService.delete(id);
-        return new ResponseEntity<>(true, HttpStatus.OK);
+    @PutMapping
+    public ResponseEntity<PersonalBancario> update(@RequestBody PersonalBancarioDTO personalBancario) {
+        try {
+            log.info("Se va a actualizar el personal bancario: {}", personalBancario);
+            personalBancarioService.actualizar(personalBancario);
+            return ResponseEntity.ok().build();
+        } catch (RuntimeException rte){
+            log.error("Error al actualizar el personal bancario", rte);
+            return ResponseEntity.badRequest().build();
+        }
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<PersonalBancario> update(@RequestBody PersonalBancario personalBancario) {
-        return new ResponseEntity<>(personalBancarioService.update(personalBancario), HttpStatus.OK);
-    }
 }

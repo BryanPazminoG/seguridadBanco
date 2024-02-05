@@ -1,83 +1,95 @@
 package com.banquito.core.banking.seguridadbanco.services;
 
 import com.banquito.core.banking.seguridadbanco.dao.PersonalBancarioRepository;
-// import com.banquito.core.banking.seguridadbanco.domain.AccesoPbRol;
 import com.banquito.core.banking.seguridadbanco.domain.PersonalBancario;
+import com.banquito.core.banking.seguridadbanco.dto.PersonalBancarioBuilder;
+import com.banquito.core.banking.seguridadbanco.dto.PersonalBancarioDTO;
 import com.banquito.core.banking.seguridadbanco.services.exception.CreateException;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
-import java.sql.Timestamp;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+
 
 @Service
 public class PersonalBancarioService {
 
-  
+    private static final Logger log = LoggerFactory.getLogger(PersonalBancarioService.class);
+
     private PersonalBancarioRepository personalBancarioRepository;
 
-    public Optional<PersonalBancario> getById(BigDecimal id) {
-        return personalBancarioRepository.findById(id);
+    public PersonalBancarioService(PersonalBancarioRepository personalBancarioRepository) {
+        this.personalBancarioRepository = personalBancarioRepository;
     }
 
-
-    public List<PersonalBancario> getByFechaCreacionBetween(Timestamp fechaInicio, Timestamp fechaFin) {
-        return personalBancarioRepository.findByFechaCreacionBetween(fechaInicio, fechaFin);
-    }
-
-
-    public Map<String, Object> getAccesosByUsuarioAndClave(String usuario, String clave) {
-        PersonalBancario personalBancario = personalBancarioRepository.findByUsuarioAndClave(usuario, clave)
-                .orElse(null);
-    
-        if (personalBancario != null) {
-            Map<String, Object> response = new HashMap<>();
-            response.put("usuario", usuario);
-            response.put("nombreRol", personalBancario.getRol().getNombreRol());
-            response.put("accesos", personalBancario.getAccesos());
-            return response;
-        }
-    
-        return null;
-    }
-
-
-    public PersonalBancario create(PersonalBancario personalBancario) {
+    public void crear(PersonalBancarioDTO dto) {
         try {
-            return personalBancarioRepository.save(personalBancario);
+            PersonalBancario personal = PersonalBancarioBuilder.toPersonalBancario(dto);
+            personal.setFechaCreacion(new Date());
+            personalBancarioRepository.save(personal);
+            log.info("Se creo el personal bancario: {}", personal);
         } catch (Exception e) {
-            throw new CreateException("Ocurrió un error al crear el PersonalBancario: " + personalBancario.toString(), e);
+            throw new CreateException("Ocurrió un error al crear el PersonalBancario", e);
         }
     }
 
-    public void delete(BigDecimal id) {
+    public void actualizar(PersonalBancarioDTO dto) {
         try {
-            Optional<PersonalBancario> personalBancario = getById(id);
-            if (personalBancario.isPresent()) {
-                personalBancarioRepository.delete(personalBancario.get());
-            } else {
-                throw new RuntimeException("El PersonalBancario con id " + id + " no existe");
-            }
+            PersonalBancario personal1 = personalBancarioRepository.findByCodPersonalBancario(dto.getCodPersonalBancario());
+            PersonalBancario personalTmp = PersonalBancarioBuilder.toPersonalBancario(dto);
+            PersonalBancario personal = PersonalBancarioBuilder.copyPersonalBancario(personalTmp, personal1);
+            personalBancarioRepository.save(personal);
+            log.info("Se actualizo a personal bancario: {}", personal);
         } catch (Exception e) {
-            throw new CreateException("Ocurrió un error al eliminar el PersonalBancario, error: " + e.getMessage(), e);
+            throw new CreateException("Ocurrió un error al actualizar el PersonalBancario", e);
         }
     }
 
-    public PersonalBancario update(PersonalBancario personalBancarioUpdate) {
-        try {
-            Optional<PersonalBancario> personalBancario = getById(personalBancarioUpdate.getCodPersonalBancario());
-            if (personalBancario.isPresent()) {
-                return create(personalBancarioUpdate);
-            } else {
-                throw new RuntimeException(
-                        "El PersonalBancario con id " + personalBancarioUpdate.getCodPersonalBancario() + " no existe");
-            }
-        } catch (Exception e) {
-            throw new CreateException("Ocurrió un error al actualizar el PersonalBancario, error: " + e.getMessage(), e);
+    public PersonalBancarioDTO obtenerPorId(Integer id) {
+        PersonalBancario personal = personalBancarioRepository.findByCodPersonalBancario(id);
+        if(personal != null){
+            log.info("Se obtuvo el personal con ID: {}", id);
+            return PersonalBancarioBuilder.toDto(personal);            
+        } else {
+            throw new RuntimeException("No Existe el clinete con el id: {}"+ id);
         }
     }
+
+    public List<PersonalBancarioDTO> obtenerTodos(){
+        List<PersonalBancarioDTO> dtos = new ArrayList<>();
+        for(PersonalBancario personal : personalBancarioRepository.findAll()){
+            dtos.add(PersonalBancarioBuilder.toDto(personal));
+        }
+        return dtos;
+    }
+
+    // public List<PersonalBancario> getByFechaCreacionBetween(Timestamp fechaInicio, Timestamp fechaFin) {
+    //     return personalBancarioRepository.findByFechaCreacionBetween(fechaInicio, fechaFin);
+    // }
+
+    // public Map<String, Object> getAccesosByUsuarioAndClave(String usuario, String clave) {
+    //     try {
+    //         PersonalBancario personalBancario = personalBancarioRepository.findByUsuarioAndClave(usuario, clave)
+    //                 .orElse(null);
+
+    //         if (personalBancario != null) {
+    //             Map<String, Object> response = new HashMap<>();
+    //             response.put("usuario", usuario);
+    //             response.put("nombreRol", personalBancario.getRol().getNombreRol());
+    //             response.put("accesos", personalBancario.getAccesos());
+    //             return response;
+    //         }
+    //     } catch (Exception e) {
+    //         log.error("Error al obtener accesos por usuario y clave", e);
+    //     }
+
+    //     return null;
+    // }
+
+
+
+
 }

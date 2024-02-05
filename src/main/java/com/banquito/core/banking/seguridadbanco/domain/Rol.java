@@ -1,6 +1,5 @@
 package com.banquito.core.banking.seguridadbanco.domain;
 
-import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 import jakarta.persistence.Column;
@@ -13,17 +12,19 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.persistence.Version;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "ROL")
 public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "COD_ROL", nullable = false)
-    private BigDecimal codRol;
+    private Integer codRol;
 
     @Column(name = "NOMBRE_ROL", nullable = false, length = 100)
     private String nombreRol;
@@ -42,10 +43,7 @@ public class Rol {
     @Version
     private Long version;
 
-    public Rol() {
-    }
-
-    public Rol(BigDecimal codRol) {
+    public Rol(Integer codRol) {
         this.codRol = codRol;
     }
 
@@ -80,11 +78,5 @@ public class Rol {
                 + ", fechaCreacion=" + fechaCreacion + ", fechaUltimaModificacion=" + fechaUltimaModificacion
                 + ", version=" + version + "]";
     }
-
-   
-   
-
-    
-
 
 }

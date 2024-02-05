@@ -4,6 +4,8 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.banquito.core.banking.seguridadbanco.dao.AccesoPbRolRepository;
@@ -13,6 +15,8 @@ import com.banquito.core.banking.seguridadbanco.services.exception.CreateExcepti
 
 @Service
 public class AccesoPbRolService {
+
+    private static final Logger log = LoggerFactory.getLogger(AccesoPbRolService.class);
 
     private AccesoPbRolRepository accesoPbRolRepository;
 
@@ -27,10 +31,11 @@ public class AccesoPbRolService {
 
     public AccesoPbRol create(AccesoPbRol accesoPbRol) {
         try {
+            log.info("Creando acceso: {}", accesoPbRol);
             return this.accesoPbRolRepository.save(accesoPbRol);
         } catch (Exception e) {
-            throw new CreateException(
-                    "Ocurrio un error al crear el acceso: " + accesoPbRol.toString(), e);
+            log.error("Error al crear el acceso: {}", accesoPbRol, e);
+            throw new CreateException("Ocurrió un error al crear el acceso", e);
         }
     }
 
@@ -38,13 +43,16 @@ public class AccesoPbRolService {
         try {
             Optional<AccesoPbRol> accesoPbRol = getById(codRol, codPerBan);
             if (accesoPbRol.isPresent()) {
+                log.info("Eliminando acceso: {}", accesoPbRol.get());
                 this.accesoPbRolRepository.delete(accesoPbRol.get());
             } else {
+                log.warn("El Acceso con id {} - {} no existe", codRol, codPerBan);
                 throw new RuntimeException(
-                        "El Acceso con id " + codRol + " - " + codPerBan + "no existe");
+                        "El Acceso con id " + codRol + " - " + codPerBan + " no existe");
             }
         } catch (Exception e) {
-            throw new CreateException("Ocurrio un error al eliminar el Acceso, error: " + e.getMessage(), e);
+            log.error("Error al eliminar el Acceso", e);
+            throw new CreateException("Ocurrió un error al eliminar el Acceso", e);
         }
     }
 
@@ -53,8 +61,7 @@ public class AccesoPbRolService {
     }
 
     public List<AccesoPbRol> findByNombreAndFechaCreacionBetween(String nombre, Timestamp fechaInicio,
-            Timestamp fechaFin) {
+                                                                 Timestamp fechaFin) {
         return accesoPbRolRepository.findByNombreAndFechaCreacionBetween(nombre, fechaInicio, fechaFin);
     }
-
 }

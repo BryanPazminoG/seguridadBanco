@@ -1,32 +1,42 @@
 package com.banquito.core.banking.seguridadbanco.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import lombok.extern.slf4j.Slf4j;
 import com.banquito.core.banking.seguridadbanco.domain.AccesoPbRol;
 import com.banquito.core.banking.seguridadbanco.services.AccesoPbRolService;
 
 
+@Slf4j
 @RestController
-@RequestMapping("/acceso")
+@RequestMapping("/api/v1/acceso")
 public class AccesoPbRolController {
-    @Autowired
-    private AccesoPbRolService accesoPbRolService;
+
+
+    private final AccesoPbRolService accesoPbRolService;
+
+    public AccesoPbRolController(AccesoPbRolService accesoPbRolService) {
+        this.accesoPbRolService = accesoPbRolService;
+    }
 
     @GetMapping("/getbyid/{codRol}/{codPerBan}")
-    public ResponseEntity<AccesoPbRol> GetById(@PathVariable("codRol") Integer codRol,
-            @PathVariable("codPerBan") Integer codPerBan) {
-        return accesoPbRolService.getById( codPerBan, codRol)
-                .map(register -> new ResponseEntity<>(register, HttpStatus.OK))
-                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    public ResponseEntity<AccesoPbRol> getById(@PathVariable("codRol") Integer codRol, @PathVariable("codPerBan") Integer codPerBan) {
+
+        log.info("Solicitud para obtener AccesoPbRol por ID: codRol={}, codPerBan={}", codRol, codPerBan);
+
+        return accesoPbRolService.getById(codPerBan, codRol)
+                .map(register -> {
+                    log.info("AccesoPbRol encontrado: {}", register);
+                    return new ResponseEntity<>(register, HttpStatus.OK);
+                })
+                .orElseGet(() -> {
+                    log.warn("AccesoPbRol no encontrado para codRol={} y codPerBan={}", codRol, codPerBan);
+                    return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+                });
     }
 
 

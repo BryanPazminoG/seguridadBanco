@@ -1,33 +1,29 @@
 package com.banquito.core.banking.seguridadbanco.domain;
 
-import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.util.List;
+import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import jakarta.persistence.Version;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "PERSONAL_BANCARIO")
 public class PersonalBancario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "COD_PER_BAN", nullable = false, precision = 8, scale = 0)
-    private BigDecimal codPersonalBancario;
+    private Integer codPersonalBancario;
 
     @Column(name = "USUARIO", nullable = false, length = 100)
     private String usuario;
@@ -39,27 +35,20 @@ public class PersonalBancario {
     private String acceso;
 
     @Column(name = "FECHA_CREACION", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Timestamp fechaCreacion;
+    //@Temporal(TemporalType.TIMESTAMP)
+    private Date fechaCreacion;
 
     @Column(name = "FECHA_ULTIMA_MODIFICACION", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Timestamp fechaUltimaModificacion;
-
-    @ManyToOne
-    @JoinColumn(name = "COD_ROL", nullable = false, updatable = false, insertable = false)
-    private Rol rol;
+    //@Temporal(TemporalType.TIMESTAMP)
+    private Date fechaUltimaModificacion;
     
-    @OneToMany(mappedBy = "personalBancario")
-    private List<AccesoPbRol> accesos;
+    // @OneToMany(mappedBy = "personalBancario")
+    // private List<AccesoPbRol> accesos;
 
     @Version
     private Long version;
 
-    public PersonalBancario(){
-    }
-
-    public PersonalBancario(BigDecimal codPersonalBancario) {
+    public PersonalBancario(Integer codPersonalBancario) {
         this.codPersonalBancario = codPersonalBancario;
     }
 
@@ -88,13 +77,15 @@ public class PersonalBancario {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "PersonalBancario [codPersonalBancario=" + codPersonalBancario + ", usuario=" + usuario + ", clave="
-                + clave + ", acceso=" + acceso + ", fechaCreacion=" + fechaCreacion + ", fechaUltimaModificacion="
-                + fechaUltimaModificacion + ", rol=" + rol + ", accesos=" + accesos + ", version=" + version + "]";
+    public PersonalBancario(Integer codPersonalBancario, String usuario, String clave, String acceso,
+            Timestamp fechaCreacion, Timestamp fechaUltimaModificacion) {
+        this.codPersonalBancario = codPersonalBancario;
+        this.usuario = usuario;
+        this.clave = clave;
+        this.acceso = acceso;
+        this.fechaCreacion = fechaCreacion;
+        this.fechaUltimaModificacion = fechaUltimaModificacion;
     }
 
-   
     
 }

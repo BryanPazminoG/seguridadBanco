@@ -12,11 +12,13 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.persistence.Version;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 @Table(name = "ACCESO_PB_ROL")
 public class AccesoPbRol {
     @EmbeddedId
@@ -50,9 +52,6 @@ public class AccesoPbRol {
 
     @Version
     private Long version;
-
-    public AccesoPbRol() {
-    }
 
     public AccesoPbRol(AccesoPbRolPK pK) {
         PK = pK;
