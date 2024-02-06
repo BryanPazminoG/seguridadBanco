@@ -41,6 +41,7 @@ public class RolService {
             log.info("Creando rol: {}", dto);
             Rol rol = RolBuilder.toPersonalBancario(dto);
             rol.setFechaCreacion(new Date());
+            rol.setFechaUltimaModificacion(new Date());
             this.rolRepository.save(rol);
         } catch (Exception e) {
             throw new CreateException("Ocurrió un error al crear el rol", e);

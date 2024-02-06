@@ -9,6 +9,7 @@ import com.banquito.core.banking.seguridadbanco.services.exception.CreateExcepti
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -30,6 +31,8 @@ public class PersonalBancarioService {
         try {
             PersonalBancario personal = PersonalBancarioBuilder.toPersonalBancario(dto);
             personal.setFechaCreacion(new Date());
+            //String claveHash = new DigestUtils("MD2").digestAsHex(personal.getClave());
+            personal.setClave(new DigestUtils("MD2").digestAsHex(personal.getClave()));
             personalBancarioRepository.save(personal);
             log.info("Se creo el personal bancario: {}", personal);
         } catch (Exception e) {
@@ -67,11 +70,10 @@ public class PersonalBancarioService {
         }
         return dtos;
     }
-/*HASH*/
     public Boolean validarUsuarioClave(PersonalBancarioDTO personalDto){
         try {
             String usuario = personalDto.getUsuario();
-            String clave = personalDto.getClave();
+            String clave = new DigestUtils("MD2").digestAsHex(personalDto.getClave());
             PersonalBancario personal = personalBancarioRepository.findByUsuarioAndClave(usuario, clave);
             if(personal != null){
                 PersonalBancarioDTO dto = PersonalBancarioBuilder.validarClave(personal);

@@ -25,6 +25,7 @@ public class AccesoPbRolService {
             log.info("Creando acceso: {}", dto);
             AccesoPbRol accesoPbRol = AccesoPbRolBuilder.toPersonalBancario(dto);
             accesoPbRol.setFechaCreacion(new Date());
+            accesoPbRol.setFechaUltimaModificacion(new Date());
             this.accesoPbRolRepository.save(accesoPbRol);
             return dto;
         } catch (Exception e) {
