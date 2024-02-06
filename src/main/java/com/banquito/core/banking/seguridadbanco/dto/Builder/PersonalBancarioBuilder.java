@@ -1,9 +1,10 @@
-package com.banquito.core.banking.seguridadbanco.dto;
+package com.banquito.core.banking.seguridadbanco.dto.Builder;
 
 
 import java.util.Date;
 
 import com.banquito.core.banking.seguridadbanco.domain.PersonalBancario;
+import com.banquito.core.banking.seguridadbanco.dto.PersonalBancarioDTO;
 
 public class PersonalBancarioBuilder {
 
@@ -49,8 +50,5 @@ public class PersonalBancarioBuilder {
     public static PersonalBancarioDTO validarClave(PersonalBancario personal){
         PersonalBancarioDTO dto = PersonalBancarioDTO.builder().usuario(personal.getUsuario()).clave(personal.getClave()).build();
         return dto;
-    }
-    
-    
-    
+    }  
 }

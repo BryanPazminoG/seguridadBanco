@@ -1,6 +1,6 @@
 package com.banquito.core.banking.seguridadbanco.domain;
 
-import java.sql.Timestamp;
+// import java.sql.Timestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,12 +8,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+// import jakarta.persistence.Temporal;
+// import jakarta.persistence.TemporalType;
 import jakarta.persistence.Version;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -33,12 +34,12 @@ public class Rol {
     private String responsable;
 
     @Column(name = "FECHA_CREACION", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Timestamp fechaCreacion;
+    // @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaCreacion;
 
     @Column(name = "FECHA_ULTIMA_MODIFICACION", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Timestamp fechaUltimaModificacion;
+    // @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaUltimaModificacion;
 
     @Version
     private Long version;

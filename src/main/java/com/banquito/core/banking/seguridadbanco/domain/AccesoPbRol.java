@@ -1,18 +1,19 @@
 package com.banquito.core.banking.seguridadbanco.domain;
 
-import java.sql.Timestamp;
+// import java.sql.Timestamp;
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+// import jakarta.persistence.Temporal;
+// import jakarta.persistence.TemporalType;
 import jakarta.persistence.Version;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -33,12 +34,12 @@ public class AccesoPbRol {
     private Integer intentosError;
 
     @Column(name = "FECHA_CREACION", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Timestamp fechaCreacion;
+    // @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaCreacion;
 
     @Column(name = "FECHA_ULTIMA_MODIFICACION", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Timestamp fechaUltimaModificacion;
+    // @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaUltimaModificacion;
 
     @ManyToOne
     @JoinColumn(name = "COD_ROL", referencedColumnName = "COD_ROL", insertable = false, updatable = false)

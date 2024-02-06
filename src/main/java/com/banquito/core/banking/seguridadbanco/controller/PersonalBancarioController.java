@@ -83,7 +83,4 @@ public class PersonalBancarioController {
             return ResponseEntity.status(500).build();
         }
     }
-
-
-
 }

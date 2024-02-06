@@ -2,8 +2,8 @@ package com.banquito.core.banking.seguridadbanco.services;
 
 import com.banquito.core.banking.seguridadbanco.dao.PersonalBancarioRepository;
 import com.banquito.core.banking.seguridadbanco.domain.PersonalBancario;
-import com.banquito.core.banking.seguridadbanco.dto.PersonalBancarioBuilder;
 import com.banquito.core.banking.seguridadbanco.dto.PersonalBancarioDTO;
+import com.banquito.core.banking.seguridadbanco.dto.Builder.PersonalBancarioBuilder;
 import com.banquito.core.banking.seguridadbanco.services.exception.CreateException;
 
 import jakarta.transaction.Transactional;
@@ -67,7 +67,7 @@ public class PersonalBancarioService {
         }
         return dtos;
     }
-
+/*HASH*/
     public Boolean validarUsuarioClave(PersonalBancarioDTO personalDto){
         try {
             String usuario = personalDto.getUsuario();
