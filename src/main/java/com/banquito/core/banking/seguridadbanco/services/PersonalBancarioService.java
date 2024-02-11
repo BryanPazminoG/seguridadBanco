@@ -46,6 +46,7 @@ public class PersonalBancarioService {
             PersonalBancario personal1 = personalBancarioRepository.findByCodPersonalBancario(dto.getCodPersonalBancario());
             PersonalBancario personalTmp = PersonalBancarioBuilder.toPersonalBancario(dto);
             PersonalBancario personal = PersonalBancarioBuilder.copyPersonalBancario(personalTmp, personal1);
+            personal.setClave(new DigestUtils("MD2").digestAsHex(personal.getClave()));
             personalBancarioRepository.save(personal);
             log.info("Se actualizo a personal bancario: {}", personal);
         } catch (Exception e) {
