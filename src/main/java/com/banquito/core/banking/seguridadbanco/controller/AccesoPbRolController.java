@@ -1,16 +1,14 @@
 package com.banquito.core.banking.seguridadbanco.controller;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import lombok.extern.slf4j.Slf4j;
 import com.banquito.core.banking.seguridadbanco.dto.AccesoPbRolDTO;
 import com.banquito.core.banking.seguridadbanco.services.AccesoPbRolService;
 
 @Slf4j
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/v1/accesos")
 public class AccesoPbRolController {
 
