@@ -10,7 +10,7 @@ import com.banquito.core.banking.seguridadbanco.services.RolService;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/rol")
+@RequestMapping("/api/v1/roles")
 public class RolController {
 
     private final RolService rolService;
@@ -19,7 +19,7 @@ public class RolController {
         this.rolService = rolService;
     }
 
-    @GetMapping("{codRol}")
+    @GetMapping("/{codRol}")
     public ResponseEntity<RolDTO> buscarPorCodRol(@PathVariable("codRol") Integer codRol) {
         try {
             log.info("Obteniendo el rol por el codRol: {}", codRol);

@@ -11,7 +11,7 @@ import com.banquito.core.banking.seguridadbanco.services.AccesoPbRolService;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/acceso")
+@RequestMapping("/api/v1/accesos")
 public class AccesoPbRolController {
 
     private final AccesoPbRolService accesoPbRolService;
