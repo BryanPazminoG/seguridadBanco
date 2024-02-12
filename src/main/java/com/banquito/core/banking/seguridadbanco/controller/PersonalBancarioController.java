@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/personal-bancario")
+@RequestMapping("/api/v1/empleados")
 public class PersonalBancarioController {
 
     private final PersonalBancarioService personalBancarioService;
@@ -69,7 +69,7 @@ public class PersonalBancarioController {
     }
 
 
-    @PostMapping("/sesion")
+    @PostMapping("/sesiones")
     public ResponseEntity<Boolean> validarUsuario(@RequestBody PersonalBancarioDTO presonalBancarioDTO){
         try {
             log.info("Validando si la infomracion enviada esta en base.");
