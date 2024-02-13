@@ -13,7 +13,7 @@ import com.banquito.core.banking.seguridadbanco.services.RolService;
 
 @Slf4j
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "", allowedHeaders = "", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})
 @RequestMapping("/api/v1/roles")
 public class RolController {
 
