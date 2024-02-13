@@ -3,6 +3,7 @@ package com.banquito.core.banking.seguridadbanco.services;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import com.banquito.core.banking.seguridadbanco.dao.RolRepository;
@@ -48,14 +49,14 @@ public class RolService {
         }
     }
 
-    // public List<Rol> findAll() {
-    // try {
-    // return (List<Rol>) rolRepository.findAll();
-    // } catch (Exception e) {
-    // log.error("Error al obtener todos los roles", e);
-    // throw e;
-    // }
-    // }
+    public List<Rol> findAll() {
+        try {
+            return (List<Rol>) rolRepository.findAll();
+        } catch (Exception e) {
+            log.error("Error al obtener todos los roles", e);
+            throw e;
+        }
+    }
 
     // public List<Rol> findByCodRolOrderByCodRol(BigDecimal codRol) {
     // try {

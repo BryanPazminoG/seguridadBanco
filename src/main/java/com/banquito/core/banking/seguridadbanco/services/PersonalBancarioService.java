@@ -27,18 +27,27 @@ public class PersonalBancarioService {
     }
 
     @Transactional
-    public void crear(PersonalBancarioDTO dto) {
+    public PersonalBancario crear(PersonalBancarioDTO dto) {
         try {
+
+            PersonalBancario usuarioExistente = personalBancarioRepository.findByUsuario(dto.getUsuario());
+            if(usuarioExistente != null){
+                return null;
+            }
+
             PersonalBancario personal = PersonalBancarioBuilder.toPersonalBancario(dto);
             personal.setFechaCreacion(new Date());
             //String claveHash = new DigestUtils("MD2").digestAsHex(personal.getClave());
             personal.setClave(new DigestUtils("MD2").digestAsHex(personal.getClave()));
             personalBancarioRepository.save(personal);
             log.info("Se creo el personal bancario: {}", personal);
+            return personal;
         } catch (Exception e) {
             throw new CreateException("Ocurrió un error al crear el PersonalBancario", e);
         }
     }
+    
+    
 
     @Transactional
     public void actualizar(PersonalBancarioDTO dto) {
@@ -71,19 +80,19 @@ public class PersonalBancarioService {
         }
         return dtos;
     }
-    public Boolean validarUsuarioClave(PersonalBancarioDTO personalDto){
+    public PersonalBancario validarUsuarioClave(PersonalBancarioDTO personalDto){
         try {
             String usuario = personalDto.getUsuario();
             String clave = new DigestUtils("MD2").digestAsHex(personalDto.getClave());
             PersonalBancario personal = personalBancarioRepository.findByUsuarioAndClave(usuario, clave);
             if(personal != null){
-                PersonalBancarioDTO dto = PersonalBancarioBuilder.validarClave(personal);
-                return dto.getClave().equals(clave) && dto.getUsuario().equals(usuario);
+                //PersonalBancarioDTO dto = PersonalBancarioBuilder.validarClave(personal);
+                return personal;
             } else {
                 throw new RuntimeException("No Existe el cliente con el usuario: {}"+ usuario);
             }
         } catch (Exception e) {
-            return false;
+            throw new RuntimeException("Error al validar usuario y claves: {}"+ e);
         }
     }
 

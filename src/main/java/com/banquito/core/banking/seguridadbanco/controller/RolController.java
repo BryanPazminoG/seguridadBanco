@@ -2,9 +2,12 @@ package com.banquito.core.banking.seguridadbanco.controller;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.banquito.core.banking.seguridadbanco.domain.Rol;
 import com.banquito.core.banking.seguridadbanco.dto.RolDTO;
 import com.banquito.core.banking.seguridadbanco.services.RolService;
 
@@ -45,11 +48,11 @@ public class RolController {
         }
     }
 
-    // @GetMapping
-    // public List<Rol> getAllRoles() {
-    // log.info("Solicitud para obtener todos los roles");
-    // return rolService.findAll();
-    // }
+    @GetMapping
+        public List<Rol> getAllRoles() {
+        log.info("Solicitud para obtener todos los roles");
+        return rolService.findAll();
+    }
 
     // @GetMapping("/byCodRol/{codRol}")
     // public List<Rol> getRolesByCodRol(@PathVariable BigDecimal codRol) {

@@ -13,4 +13,5 @@ public interface PersonalBancarioRepository extends CrudRepository<PersonalBanca
     public PersonalBancario findByCodPersonalBancario(Integer codPersonalBancario);
     public List<PersonalBancario> findByFechaCreacionBetween(Timestamp fechaInicio, Timestamp fechaFin);
     public PersonalBancario findByUsuarioAndClave(String usuario, String clave);
+    public PersonalBancario findByUsuario(String usuario);
 }

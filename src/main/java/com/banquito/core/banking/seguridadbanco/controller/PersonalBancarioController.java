@@ -2,7 +2,9 @@ package com.banquito.core.banking.seguridadbanco.controller;
 
 import lombok.extern.slf4j.Slf4j;
 
+import com.banquito.core.banking.seguridadbanco.domain.PersonalBancario;
 import com.banquito.core.banking.seguridadbanco.dto.PersonalBancarioDTO;
+import com.banquito.core.banking.seguridadbanco.dto.Builder.PersonalBancarioBuilder;
 import com.banquito.core.banking.seguridadbanco.services.PersonalBancarioService;
 
 import java.util.List;
@@ -12,7 +14,8 @@ import org.springframework.web.bind.annotation.*;
 
 
 @Slf4j
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "", allowedHeaders = "", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})
 @RestController
 @RequestMapping("/api/v1/empleados")
 public class PersonalBancarioController {
@@ -46,16 +49,18 @@ public class PersonalBancarioController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> agregarUsuario(@RequestBody PersonalBancarioDTO personalBancario) {
+    public ResponseEntity<PersonalBancarioDTO> agregarUsuario(@RequestBody PersonalBancarioDTO personalBancario) {
         try {
             log.info("Va a crear un usuario de personal bancario: {}", personalBancario);
-            personalBancarioService.crear(personalBancario);
-            return ResponseEntity.noContent().build();
+            PersonalBancario creado = personalBancarioService.crear(personalBancario);
+            PersonalBancarioDTO creadoDTO = PersonalBancarioBuilder.toDto(creado);
+            return ResponseEntity.ok(creadoDTO);
         } catch (RuntimeException rte){
             log.error("Error al crear un usuario de personal bancario.", rte);
             return ResponseEntity.badRequest().build();
         }
     }
+    
 
     @PutMapping
     public ResponseEntity<PersonalBancarioDTO> update(@RequestBody PersonalBancarioDTO personalBancario) {
@@ -71,14 +76,14 @@ public class PersonalBancarioController {
 
 
     @PostMapping("/sesiones")
-    public ResponseEntity<Boolean> validarUsuario(@RequestBody PersonalBancarioDTO presonalBancarioDTO){
+    public ResponseEntity<PersonalBancario> validarUsuario(@RequestBody PersonalBancarioDTO presonalBancarioDTO){
         try {
             log.info("Validando si la infomracion enviada esta en base.");
-            boolean resultado = personalBancarioService.validarUsuarioClave(presonalBancarioDTO);
-            if (resultado) {
-                return ResponseEntity.ok(true);
+            PersonalBancario resultado = personalBancarioService.validarUsuarioClave(presonalBancarioDTO);
+            if (resultado != null) {
+                return ResponseEntity.ok(resultado);
             } else {
-                return ResponseEntity.ok(false);
+                return ResponseEntity.badRequest().build();
             }
         } catch (Exception e) {
             return ResponseEntity.status(500).build();

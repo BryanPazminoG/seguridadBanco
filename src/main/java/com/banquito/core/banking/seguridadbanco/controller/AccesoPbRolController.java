@@ -8,7 +8,8 @@ import com.banquito.core.banking.seguridadbanco.services.AccesoPbRolService;
 
 @Slf4j
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "", allowedHeaders = "", methods = {RequestMethod.GET, RequestMethod.POST})
 @RequestMapping("/api/v1/accesos")
 public class AccesoPbRolController {
 

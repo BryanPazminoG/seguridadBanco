@@ -10,6 +10,7 @@ public class PersonalBancarioBuilder {
 
     public static PersonalBancario toPersonalBancario(PersonalBancarioDTO dto){
         PersonalBancario personal = new PersonalBancario();
+        personal.setCodPersonalBancario(dto.getCodPersonalBancario());
         personal.setAcceso(dto.getAcceso());
         personal.setUsuario(dto.getUsuario());
         personal.setClave(dto.getClave());
