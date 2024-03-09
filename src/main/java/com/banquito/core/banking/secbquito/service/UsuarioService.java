@@ -11,9 +11,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 @Slf4j
 public class UsuarioService {
-    private final UsuarioRepository;
-    @Transactional
-    public Usuario findById(Integer usuarioId){
+    private final UsuarioRepository usuarioRepository;
 
-    }
+
 }

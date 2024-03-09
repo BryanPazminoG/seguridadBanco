@@ -4,29 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fee6adb-4510-4658-b2ae-8ed34cd49ec1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/Exception/CustomException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/SecbquitoApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/controller/UsuarioController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/dao/PermisosRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/dao/RolRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/dao/UsuarioRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/domain/Permisos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/domain/Rol.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/domain/Usuario.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/dto/UsuarioReqDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/dto/UsuarioResDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/service/UsuarioService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/banquito/core/banking/secbquito/SecbquitoApplicationTests.java" afterDir="false" />
+    <list default="true" id="9fee6adb-4510-4658-b2ae-8ed34cd49ec1" name="Changes" comment="agregado nuevo proyecto de seguridad">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/dao/PermisosRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/dao/PermisosRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/dao/RolRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/dao/RolRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/dao/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/dao/UsuarioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/domain/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/domain/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/service/UsuarioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +60,11 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Gradle.Build secbquito.executor": "Run",
+    "Gradle.Build seguridadBanco.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.SecbquitoApplication.executor": "Run",
@@ -94,6 +84,36 @@
   }
 }]]></component>
   <component name="RunManager">
+    <configuration default="true" type="AZURE_FUNCTION_SUPPORT" factoryName="Run Functions">
+      <option name="appName" />
+      <option name="appServicePlanName" />
+      <option name="appServicePlanResourceGroup" />
+      <option name="appSettingsKey" value="a89b6d32-0f37-4357-96ea-4c331a931545" />
+      <option name="artifact" />
+      <option name="debugOptions" />
+      <option name="deployment" />
+      <option name="deploymentStagingDirectoryPath" />
+      <option name="funcPath" />
+      <option name="functionHostArguments" />
+      <option name="hostJsonPath" />
+      <option name="insightsName" />
+      <option name="instrumentationKey" />
+      <option name="javaVersion" />
+      <option name="localSettingsJsonPath" />
+      <option name="moduleName" />
+      <option name="os" />
+      <option name="pricingTier" />
+      <option name="providerMap">
+        <map />
+      </option>
+      <option name="region" />
+      <option name="resourceGroup" />
+      <option name="stagingFolder" />
+      <option name="subscription" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SecbquitoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="com.banquito.core.banking.secbquito.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.banquito.core.banking.secbquito.SecbquitoApplication" />
@@ -120,8 +140,17 @@
       <workItem from="1709863966987" duration="684000" />
       <workItem from="1709866593397" duration="617000" />
       <workItem from="1709993606869" duration="6674000" />
-      <workItem from="1710021119739" duration="49000" />
+      <workItem from="1710021119739" duration="2356000" />
     </task>
+    <task id="LOCAL-00001" summary="agregado nuevo proyecto de seguridad">
+      <option name="closed" value="true" />
+      <created>1710021199423</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1710021199423</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -129,6 +158,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="agregado nuevo proyecto de seguridad" />
+    <option name="LAST_COMMIT_MESSAGE" value="agregado nuevo proyecto de seguridad" />
   </component>
 </project>

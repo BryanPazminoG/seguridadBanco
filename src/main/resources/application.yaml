@@ -4,7 +4,7 @@ spring:
   datasource:
     username: root
     password: my-secret-pw
-    url: jdbc:mysql:\\host.dockerinternal:3306\segubq
+    url: jdbc:mysql://host.docker.internal:3306/segu
   jpa:
     database: mysql
     show-sql: true

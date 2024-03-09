@@ -10,6 +10,7 @@ import org.springframework.cglib.core.Local;
 import java.time.LocalDate;
 import java.util.Objects;
 
+
 @Builder
 @Entity
 @Table(name = "USUARIO")
@@ -18,25 +19,25 @@ import java.util.Objects;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ACCOUNT_CODE", updatable = false, nullable = false)
+    @Column(name = "COD_USUARIO", updatable = false, nullable = false)
     private Integer codUsuario;
-    @Column(name = "ACCOUNT_HOLDER_TYPE")
+    @Column(name = "NOMBRE_USUARIO")
     private String nombre;
-    @Column(name = "ACCOUNT_HOLDER_TYPE")
+    @Column(name = "EMAIL")
     private String email;
-    @Column(name = "ACCOUNT_HOLDER_TYPE")
+    @Column(name = "CLAVE")
     private String clave;
-    @Column(name = "ACCOUNT_HOLDER_TYPE")
+    @Column(name = "TELEFONO")
     private String tlf;
-    @Column(name = "ACCOUNT_HOLDER_TYPE")
+    @Column(name = "FECHA_CREACION")
     private LocalDate fechaCrea;
-    @Column(name = "ACCOUNT_HOLDER_TYPE")
+    @Column(name = "ULTIMA_FECHA_ACCESO")
     private LocalDate fechaUltAcceso;
-    @Column(name = "ACCOUNT_HOLDER_TYPE")
+    @Column(name = "ULTIMA_FECHA_MODIFICA")
     private LocalDate fechaModifica;
-    @Column(name = "ACCOUNT_HOLDER_TYPE")
+    @Column(name = "ESTADO")
     private String estado;
-    @Column(name = "ACCOUNT_HOLDER_TYPE")
+    @Column(name = "DETALLE")
     private String detalle;
 
     @Version
@@ -64,3 +65,5 @@ public class Usuario {
         return Objects.hash(codUsuario, nombre, email, clave, tlf, fechaCrea, fechaUltAcceso, fechaModifica, estado, detalle, version);
     }
 }
+
+
