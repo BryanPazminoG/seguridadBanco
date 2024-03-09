@@ -1,0 +1,18 @@
+server:
+  port: 9090
+spring:
+  datasource:
+    username: root
+    password: my-secret-pw
+    url: jdbc:mysql:\\host.dockerinternal:3306\segubq
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  sql:
+    init:
+      platform: mysql
+
