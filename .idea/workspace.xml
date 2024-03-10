@@ -6,12 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9fee6adb-4510-4658-b2ae-8ed34cd49ec1" name="Changes" comment="agregado nuevo proyecto de seguridad">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/dao/PermisosRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/dao/PermisosRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/dao/RolRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/dao/RolRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/dao/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/dao/UsuarioRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/domain/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/domain/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banquito/core/banking/secbquito/service/UsuarioService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +135,7 @@
       <workItem from="1709863966987" duration="684000" />
       <workItem from="1709866593397" duration="617000" />
       <workItem from="1709993606869" duration="6674000" />
-      <workItem from="1710021119739" duration="2356000" />
+      <workItem from="1710021119739" duration="5081000" />
     </task>
     <task id="LOCAL-00001" summary="agregado nuevo proyecto de seguridad">
       <option name="closed" value="true" />
