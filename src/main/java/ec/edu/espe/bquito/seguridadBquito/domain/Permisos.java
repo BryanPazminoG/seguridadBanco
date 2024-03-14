@@ -16,7 +16,7 @@ import lombok.*;
 @Setter
 public class Permisos {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "COD_PERMISOS")
     private Integer codPermisos;
 

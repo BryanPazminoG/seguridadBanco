@@ -16,7 +16,7 @@ import lombok.*;
 @Setter
 public class Rol {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "COD_ROL")
     public Integer rolCode;
 
