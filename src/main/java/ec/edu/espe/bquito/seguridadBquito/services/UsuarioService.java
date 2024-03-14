@@ -22,6 +22,9 @@ public class UsuarioService {
         if(usuario==null){
             accesoResDto.setEstado("ERROR_USUARIO_NO_EXISTE");
         }
+        if(usuario.getRol().getNombre()!=loginUsuario.getTipo()){
+            accesoResDto.setEstado("ERROR_USUARIO_NO_TIENE_PERMISO");
+        }
         accesoResDto.setUsuarioNombre(usuario.getNombre());
         accesoResDto.setEstado("ACCESO_CORRECTO");
         return accesoResDto;

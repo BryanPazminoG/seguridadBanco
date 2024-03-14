@@ -12,6 +12,8 @@ import lombok.*;
 @Table(name = "ROL")
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class Permisos {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
