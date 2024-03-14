@@ -9,7 +9,7 @@ import lombok.*;
 
 @Builder
 @Entity
-@Table(name = "ROL")
+@Table(name = "PERMISOS")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
