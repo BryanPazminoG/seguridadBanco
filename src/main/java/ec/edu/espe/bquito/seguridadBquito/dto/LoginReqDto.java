@@ -7,6 +7,6 @@ import lombok.Data;
 @Builder
 public class LoginReqDto {
     private String usuario;
-    private String contrasena;
+    private String clave;
     private String tipo;
 }

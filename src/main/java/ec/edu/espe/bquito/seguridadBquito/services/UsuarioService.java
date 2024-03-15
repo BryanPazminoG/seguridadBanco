@@ -26,7 +26,8 @@ public class UsuarioService {
     }*/
     public AccesoResDto usuarioLogin(LoginReqDto loginUsuario){
         AccesoResDto accesoResDto=new AccesoResDto();
-        Usuario usuario=this.usuarioRepository.findUsuarioByNombreAndClave(loginUsuario.getUsuario(),loginUsuario.getContrasena());
+        Usuario usuario=this.usuarioRepository.findUsuarioByNombreAndClave(loginUsuario.getUsuario(),
+                loginUsuario.getClave());
         if(usuario==null){
             accesoResDto.setEstado("ERROR_USUARIO_NO_EXISTE");
         }

@@ -18,19 +18,19 @@ public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "COD_ROL")
-    public Integer rolCode;
+    private Integer rolCode;
 
     @Column(name = "NOMBRE_ROL")
-    public String Nombre;
+    private String Nombre;
 
     @Column(name = "FECHA_CREACION")
-    public LocalDate fechaCreacion;
+    private LocalDate fechaCreacion;
 
     @Column(name = "FECHA_MODIFICACION")
-    public LocalDate fechaModificacion;
+    private LocalDate fechaModificacion;
 
     @Column(name = "DETALLE")
-    public String Detalle;
+    private String Detalle;
 
     @Version
     @Column(name = "VERSION", nullable = false)

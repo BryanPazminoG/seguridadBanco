@@ -41,12 +41,11 @@ public class Usuario {
     @Column(name = "VERSION", nullable = false)
     private Long version;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(
             name = "COD_ROL",
             referencedColumnName = "COD_ROL"
     )
-    @ToString.Exclude
     private Rol rol;
 
     @Override
