@@ -1,14 +1,14 @@
 package ec.edu.espe.bquito.seguridadBquito.services;
 
+import org.springframework.stereotype.Service;
+
 import ec.edu.espe.bquito.seguridadBquito.dao.UsuarioRepository;
 import ec.edu.espe.bquito.seguridadBquito.domain.Usuario;
 import ec.edu.espe.bquito.seguridadBquito.dto.AccesoResDto;
 import ec.edu.espe.bquito.seguridadBquito.dto.LoginReqDto;
-import ec.edu.espe.bquito.seguridadBquito.dto.UsuarioReqDto;
-import org.springframework.stereotype.Service;
+import lombok.extern.log4j.Log4j2;
 
-import java.util.Optional;
-
+@Log4j2
 @Service
 public class UsuarioService {
     private final UsuarioRepository usuarioRepository;
