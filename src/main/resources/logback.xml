@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    
+    <conversionRule conversionWord="traceId" converterClass="ch.qos.logback.classic.pattern.MDCConverter" />
+
+    <appender name="REDIS" class="com.cwbase.logback.RedisAppender">
+        <host>redis001espe.redis.cache.windows.net</host>
+        <port>6379</port>
+        <key>banquito</key>
+        <password>1YTpJpVRcmJ4a3Urtb2gKcbL1KuSBx3wjAzCaKlFPFU=</password>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>
+            {
+                "timestamp":%d{yyyy-MM-dd HH:mm:ss.SSS},
+                "traceId": %X{traceId},
+                "level": %-5level,
+                "logger": %logger{48},
+                "thread": [%thread],
+                "message": %msg
+            }
+            </pattern>
+        </layout>
+    </appender>
+
+    <logger name="com.banquito.core.baking.cuenta.service" additivity="false">
+        <appender-ref ref="REDIS"/>
+    </logger>
+    <logger name="com.banquito.core.baking.cuenta.controller" additivity="false">
+        <appender-ref ref="REDIS"/>
+    </logger>
+</configuration>
