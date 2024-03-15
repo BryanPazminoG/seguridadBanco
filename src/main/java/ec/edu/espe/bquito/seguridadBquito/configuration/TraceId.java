@@ -1,4 +1,4 @@
-package com.banquito.core.baking.cuenta.configuration;
+package ec.edu.espe.bquito.seguridadBquito.configuration;
 
 import java.util.UUID;
 

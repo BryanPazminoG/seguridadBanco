@@ -23,10 +23,10 @@
         </layout>
     </appender>
 
-    <logger name="com.banquito.core.baking.cuenta.service" additivity="false">
+    <logger name="ec.edu.espe.bquito.seguridadBquito.services" additivity="false">
         <appender-ref ref="REDIS"/>
     </logger>
-    <logger name="com.banquito.core.baking.cuenta.controller" additivity="false">
+    <logger name="ec.edu.espe.bquito.seguridadBquito.controller" additivity="false">
         <appender-ref ref="REDIS"/>
     </logger>
 </configuration>
