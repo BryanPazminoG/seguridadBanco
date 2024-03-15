@@ -46,7 +46,7 @@ public class AccesoControllerTest {
     }
 
     @Test
-    public void obtenerTipoCredito_success() throws Exception {
+    public void obtenerAcceso_success() throws Exception {
         mockMvcUsuario.perform(MockMvcRequestBuilders
                 .get("/api/v1/accesos/login")
                 .contentType(MediaType.APPLICATION_JSON))
