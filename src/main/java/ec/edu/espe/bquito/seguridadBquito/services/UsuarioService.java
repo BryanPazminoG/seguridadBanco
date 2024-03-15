@@ -24,9 +24,11 @@ public class UsuarioService {
                 loginUsuario.getClave());
         if(usuario==null){
             accesoResDto.setEstado("ERROR_USUARIO_NO_EXISTE");
+            //throw new RuntimeException(accesoResDto.getEstado());
         }
         if(usuario.getRol().getNombre()!=loginUsuario.getTipo()){
             accesoResDto.setEstado("ERROR_USUARIO_NO_TIENE_PERMISO");
+            //throw new RuntimeException(accesoResDto.getEstado());
         }
         accesoResDto.setUsuarioNombre(usuario.getNombre());
         accesoResDto.setEstado("ACCESO_CORRECTO");
