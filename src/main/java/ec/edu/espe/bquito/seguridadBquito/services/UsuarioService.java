@@ -17,13 +17,7 @@ public class UsuarioService {
         this.usuarioRepository = usuarioRepository;
     }
 
-    /*public AccesoResDto usuarioRegister(UsuarioReqDto usuarioReqDto){
-        Usuario usuarioTemp=this.usuarioRepository.findUsuarioByEmail(usuarioReqDto.getEmail())
-        if(usuarioTemp!=null){
-            throw new RuntimeException("ERROR, USUARIO CON ESE CORREO YA EXISTE");
-        }
-        ;
-    }*/
+
     public AccesoResDto usuarioLogin(LoginReqDto loginUsuario){
         AccesoResDto accesoResDto=new AccesoResDto();
         Usuario usuario=this.usuarioRepository.findUsuarioByNombreAndClave(loginUsuario.getUsuario(),
