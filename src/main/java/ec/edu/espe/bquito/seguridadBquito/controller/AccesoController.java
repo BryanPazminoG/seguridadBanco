@@ -1,15 +1,20 @@
 package ec.edu.espe.bquito.seguridadBquito.controller;
 
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import ec.edu.espe.bquito.seguridadBquito.dto.AccesoResDto;
 import ec.edu.espe.bquito.seguridadBquito.dto.LoginReqDto;
 import ec.edu.espe.bquito.seguridadBquito.services.UsuarioService;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import lombok.extern.log4j.Log4j2;
 
-@Slf4j
+@Log4j2
 @RestController
 @CrossOrigin
 @RequestMapping("api/v1/accesos")
