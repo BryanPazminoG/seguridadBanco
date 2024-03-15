@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.2.3</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>ec.edu.espe.bquito</groupId>
 	<artifactId>seguridadBquito</artifactId>
@@ -17,9 +18,36 @@
 		<java.version>17</java.version>
 		<spring-cloud-azure.version>5.10.0</spring-cloud-azure.version>
 		<commons-pool2.version>2.0</commons-pool2.version>
-    	<jedis.version>2.5.2</jedis.version>
+		<jedis.version>2.5.2</jedis.version>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.10.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.10.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>5.11.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-prometheus</artifactId>
+			<version>1.12.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -33,10 +61,10 @@
 			<artifactId>spring-cloud-azure-starter</artifactId>
 		</dependency>
 		<dependency>
-		      <groupId>org.springdoc</groupId>
-		      <artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
-		      <version>2.3.0</version>
-	   	</dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
+			<version>2.3.0</version>
+		</dependency>
 		<dependency>
 			<groupId>com.azure.spring</groupId>
 			<artifactId>spring-cloud-azure-starter-jdbc-mysql</artifactId>
@@ -68,19 +96,19 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-  			<groupId>org.codehaus.janino</groupId>
-  			<artifactId>janino</artifactId>
-  			<version>3.1.8</version>
+			<groupId>org.codehaus.janino</groupId>
+			<artifactId>janino</artifactId>
+			<version>3.1.8</version>
 		</dependency>
 		<dependency>
-  			<groupId>com.cwbase</groupId>
-  			<artifactId>logback-redis-appender</artifactId>
-  			<version>1.1.6</version>
+			<groupId>com.cwbase</groupId>
+			<artifactId>logback-redis-appender</artifactId>
+			<version>1.1.6</version>
 		</dependency>
 		<dependency>
-    		<groupId>net.logstash.logback</groupId>
-    		<artifactId>logstash-logback-encoder</artifactId>
-    		<version>7.4</version>
+			<groupId>net.logstash.logback</groupId>
+			<artifactId>logstash-logback-encoder</artifactId>
+			<version>7.4</version>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>
