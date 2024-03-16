@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: ec.edu.espe.bquito.seguridadBquito.SeguridadBquitoApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 21.65 s -- in ec.edu.espe.bquito.seguridadBquito.SeguridadBquitoApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.85 s -- in ec.edu.espe.bquito.seguridadBquito.SeguridadBquitoApplicationTests
