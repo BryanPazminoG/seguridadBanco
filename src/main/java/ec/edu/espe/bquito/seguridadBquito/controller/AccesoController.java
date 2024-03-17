@@ -16,7 +16,13 @@ import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = {"http://34.86.49.111:4200",
+        "http://34.145.220.97:4204",
+        "http://34.145.219.32:4200",
+        "http://34.162.115.216:4200"
+        })
+
+
 @RequestMapping("api/v1/accesos")
 public class AccesoController {
     private final UsuarioService usuarioService;
